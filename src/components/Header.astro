@@ -1,0 +1,28 @@
+---
+import WorkIcon from '@icons/WorkIcon.astro';
+import PhoneIcon from '@icons/PhoneIcon.astro';
+import UserIcon from '@icons/UserIcon.astro';
+import HomeIcon from '@icons/HomeIcon.astro';
+import HeaderButton from '@components/HeaderButton.astro';
+import ThemeButton from '@components/ThemeButton.astro';
+---
+
+<header
+  class="sticky top-4 z-50 flex px-4 py-3 my-4 mx-4 rounded-full justify-center items-center max-w-[800px] w-11/12 bg-secondary"
+>
+  <nav class="w-full flex justify-between md:justify-around gap-2">
+    <HeaderButton href="/" text="Inicio">
+      <HomeIcon />
+    </HeaderButton>
+    <HeaderButton href="/projects" text="Proyectos">
+      <WorkIcon />
+    </HeaderButton>
+    <HeaderButton href="/about" text="Sobre Mi">
+      <UserIcon />
+    </HeaderButton>
+    <HeaderButton href="/contact" text="Contacto">
+      <PhoneIcon />
+    </HeaderButton>
+    <ThemeButton />
+  </nav>
+</header>

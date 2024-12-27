@@ -1,11 +1,80 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// ----------- icons ----------- //
+import GmailIcon from '@icons/GmailIcon.astro';
+import LinkedInIcon from '@icons/LinkedInIcon.astro';
+import GitHubIcon from '@icons/GitHubIcon.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// ----------- components ----------- //
+import Pill from '@components/Pill.astro';
+import { Image } from 'astro:assets';
+
+// ----------- layout ----------- //
+import Layout from '@layouts/Layout.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portfolio">
+  <main class="flex flex-col w-full max-w-[1000px] my-28 sm:my-20">
+    <section class="flex flex-col md:flex-row gap-4 justify-around">
+      <article
+        class="flex flex-col items-center justify-center w-full min-h-48 h-auto m-0 gap-4 text-center md:flex-row sm:justify-normal md:text-left md:w-4/5 rounded-2xl p-4"
+      >
+        <section
+          class="flex h-48 w-48 min-w-48 overflow-hidden rounded-2xl border border-accent"
+        >
+          <Image
+            src="https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp"
+            alt="Avatar Carlos Eduardo Hernández Munévar"
+            width={192}
+            height={192}
+            class="rounded-2xl w-48 h-48 min-w-48 object-center object-cover hover:scale-110 hover:rotate-6 transition-all duration-500"
+          />
+        </section>
+        <section class="flex flex-col md:justify-between h-full w-full gap-8">
+          <h1 class="text-3xl font-bold">
+            ¡Hola, soy <strong class="text-accent">Eduardo</strong>!
+          </h1>
+          <p class="text-lg">
+            Soy un desarrollador <strong class="text-accent"
+              >full-stack junior y estudiante de Ingeniería Informática con
+              experiencia profesional en JavaScript</strong
+            >, enfocado en crear soluciones escalables y eficientes.
+          </p>
+        </section>
+      </article>
+      <section
+        class="flex flex-row md:flex-col items-center justify-center gap-6 flex-wrap"
+      >
+        <Pill
+          text="Contáctame"
+          href="mailto:ceduardo.eh@gmail.com"
+          id="contact-me"
+        >
+          <GmailIcon />
+        </Pill>
+        <Pill
+          text="LinkedIn"
+          href="https://www.linkedin.com/in/eduardo-hernandez-munevar/"
+        >
+          <LinkedInIcon />
+        </Pill>
+        <Pill text="GitHub" href="https://github.com/CEhM-Hernandez">
+          <GitHubIcon />
+        </Pill>
+      </section>
+    </section>
+  </main>
 </Layout>
+
+<script is:inline>
+  const contactBtn = document.getElementById('contact-me');
+
+  contactBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('ceduardo.eh@gmail.com');
+
+    const content = contactBtn.innerHTML;
+    contactBtn.textContent = '¡Correo copiado!';
+    setTimeout(() => {
+      contactBtn.innerHTML = content;
+    }, 10000);
+  });
+</script>
