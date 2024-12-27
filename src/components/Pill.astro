@@ -2,11 +2,10 @@
 interface Props {
   href?: string;
   text: string;
-  className?: string;
   id?: string;
 }
 
-const { text, className = '', href, id } = Astro.props;
+const { text, href, id } = Astro.props;
 ---
 
 <a
@@ -14,7 +13,7 @@ const { text, className = '', href, id } = Astro.props;
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class={`inline-flex items-center justify-center rounded-full px-2 py-1 text-sm min-w-20 font-medium gap-1 cursor-pointer hover:sacale-105 transition-all duration-200 border border-accent hover:bg-accent/50 bg-accent/20 ${className}`}
+  class="inline-flex items-center justify-center rounded-full px-2 py-1 text-sm min-w-20 font-medium gap-2 cursor-pointer hover:sacale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20"
 >
   <slot />{text}
 </a>

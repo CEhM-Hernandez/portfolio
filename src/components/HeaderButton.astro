@@ -7,9 +7,10 @@ interface Props {
 const { href, text } = Astro.props;
 ---
 
-<a
-  href={href}
-  class="flex gap-1 rounded-full w-12 h-12 bg-background md:bg-transparent md:w-auto md:h-auto md:rounded-none text-center items-center justify-center hover:scale-105 transition-all duration-300 ease-in-out hover:text-accent hover:underline decoration-wavy"
+<button
+  class="rounded-full w-12 h-12 border border-main/90 md:border-none md:w-auto md:h-auto md:bg-transparent md:hover:bg-background/80 md:px-4 text-center hover:scale-105 transition-all duration-300 ease-in-out hover:text-accent hover:underline decoration-wavy"
 >
-  <slot /><span class="hidden md:block text-center">{text}</span>
-</a>
+  <a href={href} class="flex gap-1 items-center justify-center">
+    <slot /><span class="hidden md:block text-center">{text}</span>
+  </a>
+</button>

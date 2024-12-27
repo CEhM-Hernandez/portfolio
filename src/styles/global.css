@@ -1,19 +1,18 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 :root {
-  --background: 224, 224, 224;
+  --background: 240, 240, 240;
   --main: 18, 18, 18;
-  --secondary: 150, 150, 150;
-  --accent: 41, 50, 199;
-  --reverse-accent: 59, 130, 246;
+  --secondary: 255, 255, 255;
+  --accent: 0, 100, 200;
+  /* --reverse-accent: 59, 130, 246; */
 }
 
 .dark {
   --background: 18, 18, 18;
   --main: 224, 224, 224;
   --secondary: 52, 52, 52;
-  --accent: 59, 130, 246;
-  --reverse-accent: 41, 50, 199;
+  /* --reverse-accent: 41, 50, 199; */
 }
