@@ -7,12 +7,12 @@
   --main: 18, 18, 18;
   --secondary: 255, 255, 255;
   --accent: 0, 100, 200;
-  /* --reverse-accent: 59, 130, 246; */
+  --details: 59, 130, 246;
 }
 
 .dark {
   --background: 18, 18, 18;
   --main: 224, 224, 224;
   --secondary: 52, 52, 52;
-  /* --reverse-accent: 41, 50, 199; */
+  --details: 41, 50, 199;
 }

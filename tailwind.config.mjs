@@ -9,7 +9,7 @@ export default {
 				main: 'rgba(var(--main))',
 				secondary: 'rgba(var(--secondary))',
 				accent: 'rgba(var(--accent))',
-				'reverse-accent': 'rgba(var(--reverse-accent))',
+				details: 'rgba(var(--details))',
 			},
 		},
 	},
