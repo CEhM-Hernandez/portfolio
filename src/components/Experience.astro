@@ -1,0 +1,33 @@
+---
+import WorkIcon from '@/assets/icons/WorkIcon.astro';
+import ExperienceItem from './ExperienceItem.astro';
+
+const EXPERIENCE = [
+  {
+    date: '1 Octubre 2024 - Actualidad',
+    title: 'Desarrollador Full-Stack',
+    enterprice: 'CUENTI',
+    description:
+      'Me he desempeñadorealizando desarrollos Backend con Express.js y Frontend con React.js para crear APIs y herramientas que automatizan procesos internos y optimizan la comunicación y la experiencia de usuario.',
+  },
+];
+---
+
+<article class="flex flex-col border-t border-b border-main/50 py-16 px-6">
+  <section class="flex flex-col gap-12">
+    <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10">
+      <WorkIcon class="size-10" />Experiencia Laboral
+    </h2>
+    <ol
+      class="relative border-s-2 border-main/20 dark:border-secondary w-11/12"
+    >
+      {
+        EXPERIENCE.map((experience) => (
+          <li class="mb-10 ms-4">
+            <ExperienceItem {...experience} />
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</article>

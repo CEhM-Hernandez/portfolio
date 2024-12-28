@@ -2,14 +2,33 @@
 // ------------------- icons ------------------- //
 import WorkIcon from '@icons/WorkIcon.astro';
 import PhoneIcon from '@icons/PhoneIcon.astro';
-import UserIcon from '@icons/UserIcon.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
+import DevIcon from '@icons/DevIcon.astro';
 
 // ------------------- components ------------------- //
 import HeaderButton from '@components/HeaderButton.astro';
 import ThemeButton from '@components/ThemeButton.astro';
-import DevIcon from '@/assets/icons/DevIcon.astro';
 ---
+
+<header
+  class="sticky top-4 z-50 flex px-3 py-2 m-4 rounded-full justify-center items-center max-w-[800px] w-11/12 bg-transparent transition-colors duration-300 border border-main/90"
+>
+  <nav class="w-full flex justify-between md:justify-around gap-2">
+    <HeaderButton href="/" text="Inicio">
+      <HomeIcon />
+    </HeaderButton>
+    <HeaderButton href="/experience" text="Experiencia">
+      <WorkIcon />
+    </HeaderButton>
+    <HeaderButton href="/projects" text="Proyectos">
+      <DevIcon />
+    </HeaderButton>
+    <HeaderButton href="/contact" text="Contacto">
+      <PhoneIcon />
+    </HeaderButton>
+    <ThemeButton />
+  </nav>
+</header>
 
 <script>
   let isTop = false;
@@ -43,23 +62,3 @@ import DevIcon from '@/assets/icons/DevIcon.astro';
     window.addEventListener('scroll', handleScroll);
   };
 </script>
-
-<header
-  class="sticky top-4 z-50 flex px-4 py-3 my-4 mx-4 rounded-full justify-center items-center max-w-[800px] w-11/12 bg-transparent transition-colors duration-300 border border-main/40"
->
-  <nav class="w-full flex justify-between md:justify-around gap-2">
-    <HeaderButton href="/" text="Inicio">
-      <HomeIcon />
-    </HeaderButton>
-    <HeaderButton href="/experience" text="Experiencia">
-      <WorkIcon />
-    </HeaderButton>
-    <HeaderButton href="/projects" text="Proyectos">
-      <DevIcon />
-    </HeaderButton>
-    <HeaderButton href="/contact" text="Contacto">
-      <PhoneIcon />
-    </HeaderButton>
-    <ThemeButton />
-  </nav>
-</header>

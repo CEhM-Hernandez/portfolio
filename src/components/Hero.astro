@@ -1,0 +1,94 @@
+---
+// ----------- icons ----------- //
+import GmailIcon from '@icons/GmailIcon.astro';
+import LinkedInIcon from '@icons/LinkedInIcon.astro';
+import GitHubIcon from '@icons/GitHubIcon.astro';
+import ArrowIcon from '@icons/ArrowIcon.astro';
+
+// ----------- components ----------- //
+import Pill from '@components/Pill.astro';
+import { Image } from 'astro:assets';
+---
+
+<article
+  class="flex flex-col items-center lg:flex-row gap-6 lg:gap-0 justify-between w-full"
+>
+  <section
+    class="flex flex-col items-center justify-center w-full min-h-48 h-auto m-0 gap-4 text-center lg:flex-row md:justify-normal lg:text-left md:w-5/6 rounded-2xl"
+  >
+    <div
+      class="flex min-h-48 min-w-48 h-48 w-48 overflow-hidden rounded-2xl border border-accent"
+    >
+      <Image
+        transition:name="hero"
+        src="https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp"
+        alt="Avatar Carlos Eduardo Hernández Munévar"
+        width={192}
+        height={192}
+        loading="eager"
+        class="rounded-2xl w-full h-full object-center object-cover hover:scale-110 hover:rotate-6 transition-all duration-500"
+      />
+    </div>
+    <div class="flex flex-col h-full w-full gap-6">
+      <h1 class="text-3xl font-bold">
+        ¡Hola, soy <strong class="text-accent">Eduardo</strong>!
+      </h1>
+      <div class="flex flex-col gap-4 items-center lg:items-start">
+        <p class="text-lg">
+          Soy un desarrollador <strong class="text-accent"
+            >full-stack junior y estudiante de Ingeniería Informática con
+            experiencia profesional en JavaScript</strong
+          >, enfocado en crear soluciones escalables y eficientes.
+        </p>
+        <a
+          href="/about"
+          class="flex items-center gap-2 text-main hover:text-accent transition-all bg-secondary/90 hover:bg-secondary rounded-full px-2 py-1 text-sm w-fit border border-main hover:border-accent duration-300 hover:scale-95 hover:underline decoration-wavy"
+        >
+          Más Información<ArrowIcon />
+        </a>
+      </div>
+    </div>
+  </section>
+  <ul
+    class="flex flex-row lg:flex-col items-center justify-center gap-6 flex-wrap mx-4 md:mx-0"
+  >
+    <li>
+      <Pill
+        text="Contáctame"
+        href="mailto:ceduardo.eh@gmail.com"
+        id="contact-me"
+      >
+        <GmailIcon />
+      </Pill>
+    </li>
+    <li>
+      <Pill
+        text="LinkedIn"
+        href="https://www.linkedin.com/in/eduardo-hernandez-munevar/"
+      >
+        <LinkedInIcon />
+      </Pill>
+    </li>
+    <li>
+      <Pill text="GitHub" href="https://github.com/CEhM-Hernandez">
+        <GitHubIcon />
+      </Pill>
+    </li>
+  </ul>
+</article>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const contactBtn = document.getElementById('contact-me');
+
+    contactBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('ceduardo.eh@gmail.com');
+
+      const content = contactBtn.innerHTML;
+      contactBtn.textContent = '¡Correo copiado!';
+      setTimeout(() => {
+        contactBtn.innerHTML = content;
+      }, 10000);
+    });
+  });
+</script>

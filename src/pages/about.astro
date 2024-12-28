@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Image from 'astro/components/Image.astro';
+---
+
+<Layout title="About">
+  <main class="flex h-screen w-screen items-center justify-center">
+    <Image
+      transition:name="hero"
+      src="https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp"
+      alt="Avatar Carlos Eduardo Hernández Munévar"
+      width={500}
+      height={500}
+      class="object-center object-cover"
+    />
+  </main>
+</Layout>
