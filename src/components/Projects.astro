@@ -58,7 +58,7 @@ const PROYECTS: Proyect[] = [
                 height={240}
               />
             </div>
-            <div class="flex flex-col gap-2 w-full sm:w-1/2 md:w-3/4">
+            <div class="flex flex-col gap-12 sm:gap-0 w-full sm:w-1/2 md:w-3/4">
               <div class="flex flex-col gap-4">
                 <h3 class="text-2xl font-bold text-accent text-center sm:text-start text-balance">
                   {title}
@@ -67,12 +67,12 @@ const PROYECTS: Proyect[] = [
               </div>
               <div class="flex flex-row justify-center sm:justify-normal gap-2 h-full items-center flex-wrap">
                 {tags.map((tag) => (
-                  <div
+                  <span
                     class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
                   >
                     {tag.icon && <tag.icon class="size-5 rounded-md" />}
                     {tag.name}
-                  </div>
+                  </span>
                 ))}
               </div>
             </div>
