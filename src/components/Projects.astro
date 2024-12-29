@@ -109,23 +109,25 @@ const PROYECTS: Proyect[] = [
         <li>
           <a
             href={`/${title}`}
-            class="flex flex-row border border-main/15 p-4 rounded-lg gap-4"
+            class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4"
           >
-            <div class="w-fit rounded-lg overflow-hidden">
+            <div class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center">
               <Image
                 src={image}
                 alt={`Miniatura de la aplicación ${title}`}
-                class="min-w-60 rounded-lg aspect-square object-cover object-center hover:scale-105 transition-transform duration-300"
+                class="md:min-w-60 rounded-lg aspect-[4/3] sm:aspect-square object-cover object-center hover:scale-105 transition-transform duration-300 mx-auto w-full"
                 width={240}
                 height={240}
               />
             </div>
-            <div class="flex flex-col gap-2 w-3/4">
+            <div class="flex flex-col gap-2 w-full sm:w-1/2 md:w-3/4">
               <div class="flex flex-col gap-4">
-                <h3 class="text-2xl font-bold text-accent">{title}</h3>
+                <h3 class="text-2xl font-bold text-accent text-center sm:text-start text-balance">
+                  {title}
+                </h3>
                 <p class="text-pretty">{description}</p>
               </div>
-              <div class="flex flex-row gap-2 h-full items-center">
+              <div class="flex flex-row justify-center sm:justify-normal gap-2 h-full items-center flex-wrap">
                 {tags.map((tag) => (
                   <div
                     class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
