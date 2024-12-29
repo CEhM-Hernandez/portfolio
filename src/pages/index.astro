@@ -1,7 +1,8 @@
 ---
 // ----------- components ----------- //
-import Experience from '@/components/Experience.astro';
-import Projects from '@/components/Projects.astro';
+import Experience from '@components/Experience.astro';
+import Projects from '@components/Projects.astro';
+import SectionContainer from '@components/SectionContainer.astro';
 import Hero from '@components/Hero.astro';
 
 // ----------- layout ----------- //
@@ -10,10 +11,14 @@ import Layout from '@layouts/Layout.astro';
 
 <Layout title="Portfolio de CEhM - Eduardo Hernández">
   <main
-    class="flex flex-col w-full max-w-[1000px] my-28 sm:my-20 gap-20 mx-auto px-4"
+    class="flex flex-col w-full max-w-[1000px] my-28 sm:my-20 gap-20 mx-auto"
   >
     <Hero />
-    <Experience />
-    <Projects />
+    <SectionContainer id="experience">
+      <Experience />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <Projects />
+    </SectionContainer>
   </main>
 </Layout>

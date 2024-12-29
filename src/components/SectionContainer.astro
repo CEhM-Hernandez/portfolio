@@ -1,0 +1,13 @@
+---
+// ----------- props ----------- //
+interface Props {
+  id?: string;
+}
+
+const { id = '' } = Astro.props;
+---
+
+<span id={id} class="block w-full h-[1px] bg-main/50"></span>
+<div class="flex flex-col mx-4">
+  <slot />
+</div>

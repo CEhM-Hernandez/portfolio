@@ -1,6 +1,8 @@
 ---
-import ArrowIcon from '@/assets/icons/ArrowIcon.astro';
+// ----------- components ----------- //
+import ArrowIcon from '@icons/ArrowIcon.astro';
 
+// ----------- props ----------- //
 interface Props {
   title: string;
   date: string;
@@ -20,13 +22,13 @@ const { title, date, description, link, enterprice } = Astro.props;
 <time class="mb-1 text-sm font-normal leading-none text-main/60">{date}</time>
 <div class="flex gap-8 flex-col md:flex-row">
   <div class="w-full flex flex-col gap-4">
-    <h3 class="text-lg font-bold text-accent w-full">
+    <h3 class="text-lg font-bold text-accent w-full text-balance">
       {title}
     </h3>
     <p class="text-main/60 font-bold">{enterprice}</p>
   </div>
 
-  <p class="mb-4 font-normal text-main/90">
+  <p class="mb-4 font-normal text-main/90 text-pretty">
     {description}
   </p>
 </div>

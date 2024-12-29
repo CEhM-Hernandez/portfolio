@@ -14,11 +14,9 @@ import { Image } from 'astro:assets';
   class="flex flex-col items-center lg:flex-row gap-6 lg:gap-0 justify-between w-full"
 >
   <section
-    class="flex flex-col items-center justify-center w-full min-h-48 h-auto m-0 gap-4 text-center lg:flex-row md:justify-normal lg:text-left md:w-5/6 rounded-2xl"
+    class="flex flex-col items-center justify-center w-full min-h-48 h-auto m-0 gap-4 text-center lg:flex-row md:justify-normal lg:text-left md:w-5/6 rounded-lg"
   >
-    <div
-      class="flex min-h-48 min-w-48 h-48 w-48 overflow-hidden rounded-2xl border border-accent"
-    >
+    <div class="min-w-48 min-h-48 flex overflow-hidden rounded-lg">
       <Image
         transition:name="hero"
         src="https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp"
@@ -26,7 +24,7 @@ import { Image } from 'astro:assets';
         width={192}
         height={192}
         loading="eager"
-        class="rounded-2xl w-full h-full object-center object-cover hover:scale-110 hover:rotate-6 transition-all duration-500"
+        class="rounded-lg aspect-square object-center object-cover"
       />
     </div>
     <div class="flex flex-col h-full w-full gap-6">
@@ -34,7 +32,7 @@ import { Image } from 'astro:assets';
         ¡Hola, soy <strong class="text-accent">Eduardo</strong>!
       </h1>
       <div class="flex flex-col gap-4 items-center lg:items-start">
-        <p class="text-lg">
+        <p class="text-lg text-pretty">
           Soy un desarrollador <strong class="text-accent"
             >full-stack junior y estudiante de Ingeniería Informática con
             experiencia profesional en JavaScript</strong

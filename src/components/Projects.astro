@@ -1,16 +1,144 @@
 ---
-import DevIcon from '@/assets/icons/DevIcon.astro';
+// ----------- components ----------- //
+import HtmlIcon from '@icons/HtmlIcon.astro';
+import NextIcon from '@icons/NextIcon.astro';
+import CssIcon from '@icons/CssIcon.astro';
+import TailwindIcon from '@icons/TailwindIcon.astro';
+import ReactIcon from '@icons/ReactIcon.astro';
+import NodeIcon from '@icons/NodeIcon.astro';
+import ExpressIcon from '@icons/ExpressIcon.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import JavascriptIcon from '@icons/JavascriptIcon.astro';
+import TypescriptIcon from '@icons/TypescriptIcon.astro';
+import DevIcon from '@icons/DevIcon.astro';
+import { Image } from 'astro:assets';
+
+// ----------- types ----------- //
+const TAGS_DICTIONARY = {
+  HTML: {
+    name: 'HTML',
+    class:
+      'border border-[#ef652a] hover:bg-[#ef652a]/40 hover:text-white uppercase',
+    icon: HtmlIcon,
+  },
+  NEXT: {
+    name: 'Next.js',
+    class: 'border border-black hover:bg-black/40 hover:text-white',
+    icon: NextIcon,
+  },
+  CSS: {
+    name: 'CSS',
+    class:
+      'border border-[#663398] hover:bg-[#663398]/40 hover:text-white uppercase',
+    icon: CssIcon,
+  },
+  JAVASCRIPT: {
+    name: 'JavaScript',
+    class: 'border border-[#F0DC4E] hover:bg-[#F0DC4E]/40 hover:text-black',
+    icon: JavascriptIcon,
+  },
+  TYPESCRIPT: {
+    name: 'TypeScript',
+    class: 'border border-[#2D79C7] hover:bg-[#2D79C7]/40 hover:text-white',
+    icon: TypescriptIcon,
+  },
+  REACT: {
+    name: 'React',
+    class: 'border border-[#00D8FF] hover:bg-[#00D8FF]/40 hover:text-black',
+    icon: ReactIcon,
+  },
+  NODE: {
+    name: 'Node.js',
+    class: 'border border-[#4CAF50] hover:bg-[#4CAF50]/40 hover:text-white',
+    icon: NodeIcon,
+  },
+  EXPRESS: {
+    name: 'Express.js',
+    class: 'border border-[#222222] hover:bg-[#222222]/40 hover:text-white',
+    icon: ExpressIcon,
+  },
+  ASTRO: {
+    name: 'Astro',
+    class: 'border border-[#36147B] hover:bg-[#36147B]/40 hover:text-white',
+    icon: AstroIcon,
+  },
+  TAILWIND: {
+    name: 'Tailwind CSS',
+    class: 'border border-[#38B2AC] hover:bg-[#38B2AC]/40 hover:text-white',
+    icon: TailwindIcon,
+  },
+};
+
+interface Tags {
+  name: string;
+  class: string;
+  icon?: any;
+}
+
+interface Proyect {
+  title: string;
+  description: string;
+  image: string;
+  tags: Tags[];
+}
+
+// ----------- content ----------- //
+const PROYECTS: Proyect[] = [
+  {
+    title: 'Proyecto 1',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id eos beatae rerum, doloribus voluptatum aliquam ea excepturi est laudantium! Animi eligendi molestias ex enim repellat, quidem ipsam ea deleniti',
+    image: 'https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp',
+    tags: [
+      TAGS_DICTIONARY.HTML,
+      TAGS_DICTIONARY.CSS,
+      TAGS_DICTIONARY.JAVASCRIPT,
+    ],
+  },
+];
 ---
 
-<article class="flex flex-col px-6">
-  <section class="flex flex-col gap-12">
-    <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10">
-      <DevIcon class="size-10" />Proyectos
-    </h2>
-    <h3
-      class="w-full uppercase text-center font-bold text-4xl rounded-xl bg-red-500 p-4 text-black"
-    >
-      aún en desarrollo...
-    </h3>
-  </section>
+<article class="flex flex-col gap-12">
+  <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10">
+    <DevIcon class="size-10" />Proyectos
+  </h2>
+
+  <ul class="flex flex-col gap-4">
+    {
+      PROYECTS.map(({ title, description, image, tags }) => (
+        <li>
+          <a
+            href={`/${title}`}
+            class="flex flex-row border border-main/15 p-4 rounded-lg gap-4"
+          >
+            <div class="w-fit rounded-lg overflow-hidden">
+              <Image
+                src={image}
+                alt={`Miniatura de la aplicación ${title}`}
+                class="min-w-60 rounded-lg aspect-square object-cover object-center hover:scale-105 transition-transform duration-300"
+                width={240}
+                height={240}
+              />
+            </div>
+            <div class="flex flex-col gap-2 w-3/4">
+              <div class="flex flex-col gap-4">
+                <h3 class="text-2xl font-bold text-accent">{title}</h3>
+                <p class="text-pretty">{description}</p>
+              </div>
+              <div class="flex flex-row gap-2 h-full items-center">
+                {tags.map((tag) => (
+                  <div
+                    class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
+                  >
+                    {tag.icon && <tag.icon class="size-5 rounded-md" />}
+                    {tag.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </article>
