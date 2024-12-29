@@ -2,9 +2,12 @@
 // ----------- components ----------- //
 
 import DevIcon from '@icons/DevIcon.astro';
+import GitHubIcon from '@icons/GitHubIcon.astro';
+import ArrowIcon from '@icons/ArrowIcon.astro';
 import { Image } from 'astro:assets';
 
 import { TAGS_DICTIONARY } from '@utils/constants.js';
+import LinkIcon from '@/assets/icons/LinkIcon.astro';
 
 // ----------- types ----------- //
 interface Tags {
@@ -15,18 +18,40 @@ interface Tags {
 
 interface Proyect {
   title: string;
+  demoUrl: string;
+  codeUrl: string;
   description: string;
-  image: string;
+  thumbnail: string;
   tags: Tags[];
 }
 
 // ----------- content ----------- //
+
+function titleToSlug(title: string): string {
+  return title.toLowerCase().replace(/\s/g, '-');
+}
+
 const PROYECTS: Proyect[] = [
   {
-    title: 'Proyecto 1',
+    title: 'PaintJS',
+    demoUrl: 'https://paint-js-cehm.vercel.app/',
+    codeUrl: 'https://github.com/CEhM-Hernandez/PaintJS',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id eos beatae rerum, doloribus voluptatum aliquam ea excepturi est laudantium! Animi eligendi molestias ex enim repellat, quidem ipsam ea deleniti',
-    image: 'https://i.postimg.cc/ZRRgvpJN/dibujo-avatar-1.webp',
+      'Aplicación web interactiva que permite dibujar en un lienzo, elegir colores, ajustar tamaños de pincel y guardar tus creaciones, además de una estética retro. Desarrollada con HTML, CSS y JavaScript vanilla como ejercicio de desarrollo de lógica de programación.',
+    thumbnail: '/images/thumbnail-paintJS.webp',
+    tags: [
+      TAGS_DICTIONARY.HTML,
+      TAGS_DICTIONARY.CSS,
+      TAGS_DICTIONARY.JAVASCRIPT,
+    ],
+  },
+  {
+    title: 'Base64 Encoder/Decoder.',
+    demoUrl: 'https://base64-encoder-cehm.vercel.app/',
+    codeUrl: 'https://github.com/CEhM-Hernandez/base64-encoder',
+    description:
+      'Aplicación web que permite codificar y decodificar texto en formato Base64, con la posibilidad de copiar el resultado al portapapeles.',
+    thumbnail: '/images/thumbnail-base64.webp',
     tags: [
       TAGS_DICTIONARY.HTML,
       TAGS_DICTIONARY.CSS,
@@ -43,42 +68,61 @@ const PROYECTS: Proyect[] = [
 
   <ul class="flex flex-col gap-4">
     {
-      PROYECTS.map(({ title, description, image, tags }) => (
-        <li>
-          <a
-            href={`/${title}`}
-            class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4"
-          >
-            <div class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center">
-              <Image
-                src={image}
-                alt={`Miniatura de la aplicación ${title}`}
-                class="md:min-w-60 rounded-lg aspect-[4/3] sm:aspect-square object-cover object-center hover:scale-105 transition-transform duration-300 mx-auto w-full"
-                width={240}
-                height={240}
-              />
-            </div>
-            <div class="flex flex-col gap-12 sm:gap-0 w-full sm:w-1/2 md:w-3/4">
-              <div class="flex flex-col gap-4">
-                <h3 class="text-2xl font-bold text-accent text-center sm:text-start text-balance">
-                  {title}
-                </h3>
-                <p class="text-pretty">{description}</p>
+      PROYECTS.map(
+        ({ title, description, thumbnail, tags, codeUrl, demoUrl }) => (
+          <li>
+            <article class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4">
+              <div class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center">
+                <Image
+                  transition:name={`project-${titleToSlug(title)}`}
+                  src={thumbnail}
+                  alt={`Miniatura de la aplicación ${title} hecha con una captura de pantalla de la misma.`}
+                  class="md:min-w-60 rounded-lg aspect-[4/3] sm:aspect-square object-cover object-center hover:scale-105 transition-transform duration-300 mx-auto w-full sm:max-w- md:max-w-[300px]"
+                  width={300}
+                  height={300}
+                />
               </div>
-              <div class="flex flex-row justify-center sm:justify-normal gap-2 h-full items-center flex-wrap">
-                {tags.map((tag) => (
-                  <span
-                    class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
+              <div class="flex flex-col gap-12 sm:gap-0 w-full sm:w-1/2 md:w-3/4">
+                <div class="flex flex-col gap-4">
+                  <h3 class="text-2xl font-bold text-accent text-center sm:text-start text-balance">
+                    {title}
+                  </h3>
+                  <p class="text-pretty">{description}</p>
+                </div>
+                <div class="flex flex-row justify-center sm:justify-normal gap-2 h-full items-center flex-wrap">
+                  {tags.map((tag) => (
+                    <span
+                      class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
+                    >
+                      {tag.icon && <tag.icon class="size-5 rounded-md" />}
+                      {tag.name}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex flex-row justify-center sm:justify-normal gap-4">
+                  <a
+                    href={demoUrl}
+                    rel="noopener"
+                    target="_blank"
+                    class="flex items-center gap-1 leading-4 text-main hover:text-accent transition-all bg-secondary/90 hover:bg-secondary rounded-lg p-2 text-sm w-fit border border-main hover:border-accent duration-300 hover:scale-95 hover:underline decoration-wavy"
                   >
-                    {tag.icon && <tag.icon class="size-5 rounded-md" />}
-                    {tag.name}
-                  </span>
-                ))}
+                    <LinkIcon class="size-5 stroke-2" />
+                    Demo
+                  </a>
+                  <a
+                    href={codeUrl}
+                    rel="noopener"
+                    target="_blank"
+                    class="flex items-center gap-2 leading-4 text-main hover:text-accent transition-all bg-secondary/90 hover:bg-secondary rounded-lg p-2 text-sm w-fit border border-main hover:border-accent duration-300 hover:scale-95 hover:underline decoration-wavy"
+                  >
+                    <GitHubIcon class="size-5" /> Código
+                  </a>
+                </div>
               </div>
-            </div>
-          </a>
-        </li>
-      ))
+            </article>
+          </li>
+        )
+      )
     }
   </ul>
 </article>
