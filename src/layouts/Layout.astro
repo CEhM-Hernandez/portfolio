@@ -14,9 +14,10 @@ import Analytics from '@vercel/analytics/astro';
 // ----------- props ----------- //
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,6 +26,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <Analytics />
     <ClientRouter />
@@ -55,11 +57,6 @@ const { title } = Astro.props;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 1ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 1ms !important;
-      }
       html {
         scroll-behavior: auto !important;
       }
