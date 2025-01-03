@@ -14,7 +14,7 @@ import ThemeButton from '@components/ThemeButton.astro';
   class="sticky top-4 z-50 flex px-3 py-2 m-4 rounded-full justify-center items-center max-w-[800px] w-11/12 bg-transparent transition-colors duration-300 border border-main/90"
 >
   <nav class="w-full flex justify-between md:justify-around gap-2">
-    <HeaderButton href="/#" text="Inicio">
+    <HeaderButton href="/" text="Inicio">
       <HomeIcon />
     </HeaderButton>
     <HeaderButton href="/#experience" text="Experiencia">
@@ -37,22 +37,13 @@ import ThemeButton from '@components/ThemeButton.astro';
     isTop = window.scrollY === 0;
 
     const $header = document.querySelector('header');
-    const $headerButtons = document.querySelectorAll('nav>button');
 
     if (isTop) {
       $header?.classList.add('bg-transparent');
       $header?.classList.remove('bg-secondary');
-
-      $headerButtons.forEach((button) => {
-        button.classList.remove('bg-background');
-      });
     } else {
       $header?.classList.remove('bg-transparent');
       $header?.classList.add('bg-secondary');
-
-      $headerButtons.forEach((button) => {
-        button.classList.add('bg-background');
-      });
     }
   }
 
