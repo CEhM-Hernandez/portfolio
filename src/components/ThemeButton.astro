@@ -12,11 +12,14 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
 </button>
 
 <script is:inline>
-  const getThemePreferences = () =>
-    localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light');
+  const getThemePreferences = () => {
+    return (
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light')
+    );
+  };
 
   const applyTheme = () => {
     const isDark = getThemePreferences() === 'dark';
@@ -35,7 +38,7 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.contains('dark');
     document.documentElement.classList.toggle('dark', !isDark);
-    localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
     updateButtonLabel(!isDark);
   };
 
@@ -50,8 +53,6 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupThemeButton);
-  } else {
-    setupThemeButton();
   }
 
   document.addEventListener('astro:after-swap', setupThemeButton);
