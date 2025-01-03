@@ -1,3 +1,4 @@
+// ------------- icons ------------- //
 import HtmlIcon from '@icons/HtmlIcon.astro';
 import NextIcon from '@icons/NextIcon.astro';
 import CssIcon from '@icons/CssIcon.astro';
@@ -15,27 +16,26 @@ import FigmaIcon from '@icons/FigmaIcon.astro';
 import PostmanIcon from '@icons/PostmanIcon.astro';
 
 // ------------- types ------------- //
-export interface Tags {
-  name: string;
-  class: string;
-  icon?: any;
-}
-
-export interface Project {
-  title: string;
-  demoUrl: string;
-  codeUrl: string;
-  description: string;
-  thumbnailUrl: string;
-  tags: Tags[];
-}
-
-export interface Skill {
-  name: string;
-  icon: any;
-}
+import type { Experience, Project, Skill } from '@/types/types';
 
 // ------------- constants ------------- //
+export const EXPERIENCE: Experience[] = [
+  {
+    date: 'Octubre 2024 - Actualidad',
+    title: 'Desarrollador Full-Stack',
+    enterprice: { name: 'CUENTI', link: 'https://cuenti.com' },
+    description:
+      'Me he desempeñado realizando desarrollos Backend con Express.js y Frontend con React.js para crear APIs y herramientas que automatizan procesos internos y optimizan la comunicación y la experiencia de usuario.',
+  },
+  {
+    date: 'Julio 2024 - Septiembre 2024',
+    title: 'Desarrollador Frontend',
+    enterprice: { name: 'CEhM' },
+    description:
+      'Durante este tiempo, he trabajado en la creación de interfaces de usuario con React.js y Tailwind CSS, implementando diseños responsivos y accesibles para mejorar la experiencia de usuario.',
+  },
+];
+
 export const TAGS_DICTIONARY = {
   HTML: {
     name: 'HTML',
