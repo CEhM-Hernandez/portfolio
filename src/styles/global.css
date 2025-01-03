@@ -16,3 +16,7 @@
   --secondary: 52, 52, 52;
   --details: 41, 50, 199;
 }
+
+.half-star {
+  clip-path: inset(0 50% 0 0);
+}

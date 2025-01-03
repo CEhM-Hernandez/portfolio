@@ -28,4 +28,5 @@ export interface Project {
 export interface Skill {
   name: string;
   icon: any;
+  level: number;
 }

@@ -1,13 +1,13 @@
 ---
 // ------------------- icons ------------------- //
 import WorkIcon from '@icons/WorkIcon.astro';
-import PhoneIcon from '@icons/PhoneIcon.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
 import DevIcon from '@icons/DevIcon.astro';
 
 // ------------------- components ------------------- //
 import HeaderButton from '@components/HeaderButton.astro';
 import ThemeButton from '@components/ThemeButton.astro';
+import UserIcon from '@/assets/icons/UserIcon.astro';
 ---
 
 <header
@@ -23,8 +23,8 @@ import ThemeButton from '@components/ThemeButton.astro';
     <HeaderButton href="/#projects" text="Proyectos">
       <DevIcon />
     </HeaderButton>
-    <HeaderButton href="/#contact" text="Contacto">
-      <PhoneIcon />
+    <HeaderButton href="/about" text="Sobre Mí">
+      <UserIcon />
     </HeaderButton>
     <ThemeButton />
   </nav>

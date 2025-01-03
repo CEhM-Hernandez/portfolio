@@ -124,34 +124,42 @@ export const FRONTEND_SKILLS: Skill[] = [
   {
     name: 'HTML',
     icon: HtmlIcon,
+    level: 3,
   },
   {
     name: 'CSS',
     icon: CssIcon,
+    level: 2.5,
   },
   {
     name: 'JavaScript',
     icon: JavascriptIcon,
+    level: 2.5,
   },
   {
     name: 'TypeScript',
     icon: TypescriptIcon,
+    level: 2.5,
   },
   {
     name: 'React',
     icon: ReactIcon,
+    level: 2,
   },
   {
     name: 'Next.js',
     icon: NextIcon,
+    level: 2,
   },
   {
     name: 'Tailwind CSS',
     icon: TailwindIcon,
+    level: 3,
   },
   {
     name: 'Astro',
     icon: AstroIcon,
+    level: 2.5,
   },
 ];
 
@@ -159,10 +167,12 @@ export const BACKEND_SKILLS: Skill[] = [
   {
     name: 'Node.js',
     icon: NodeIcon,
+    level: 2,
   },
   {
     name: 'Express.js',
     icon: ExpressIcon,
+    level: 2,
   },
 ];
 
@@ -170,21 +180,26 @@ export const TOOLS_SKILLS: Skill[] = [
   {
     name: 'Git',
     icon: GitIcon,
+    level: 2,
   },
   {
     name: 'GitHub',
     icon: GitHubIcon,
+    level: 3,
   },
   {
     name: 'VSCode',
     icon: VsCodeIcon,
+    level: 3,
   },
   {
     name: 'Figma',
     icon: FigmaIcon,
+    level: 2,
   },
   {
     name: 'Postman',
     icon: PostmanIcon,
+    level: 1.5,
   },
 ];
