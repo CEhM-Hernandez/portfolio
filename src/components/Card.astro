@@ -1,0 +1,17 @@
+---
+interface Props {
+  className?: string;
+  title?: string;
+  clear?: boolean;
+}
+
+const { className = '', clear = false } = Astro.props;
+---
+
+<div
+  class={clear
+    ? `${className}`
+    : `flex flex-col gap-4 bg-secondary backdrop-blur-lg rounded-lg p-4 shadow-lg overflow-auto ${className}`}
+>
+  <slot />
+</div>
