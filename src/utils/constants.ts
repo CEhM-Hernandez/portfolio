@@ -25,16 +25,17 @@ export const EXPERIENCE: Experience[] = [
     title: 'Desarrollador Full-Stack',
     enterprice: { name: 'CUENTI', link: 'https://cuenti.com' },
     description:
-      'Me he desempeñado realizando desarrollos Backend con Express.js y Frontend con React.js para crear APIs y herramientas que automatizan procesos internos y optimizan la comunicación y la experiencia de usuario.',
+      'En mi rol como Desarrollador Full-Stack, he creado soluciones eficientes en Backend con Express.js y Frontend con React.js, cumpliendo con los tiempos estipulados y superando las expectativas en cada proyecto. He creado APIs y herramientas que han automatizado procesos internos clave, optimizando la comunicación entre equipos y mejorando la experiencia del usuario final.',
   },
   {
-    date: 'Julio 2024 - Septiembre 2024',
+    date: 'Febrero 2023 - Octubre 2024',
     title: 'Desarrollador Frontend',
     enterprice: { name: 'CEhM' },
     description:
-      'Durante este tiempo, he trabajado en la creación de interfaces de usuario con React.js y Tailwind CSS, implementando diseños responsivos y accesibles para mejorar la experiencia de usuario.',
+      'En este periodo, me dediqué a fortalecer mis habilidades en desarrollo web a través de proyectos personales, participación en cursos de academias como Alura Latam. Este tiempo también marcó el inicio de mi carrera universitaria en Ingeniería Informática, consolidando mi base técnica y mi compromiso con la formación continua.',
   },
 ];
+
 
 export const TAGS_DICTIONARY = {
   HTML: {
