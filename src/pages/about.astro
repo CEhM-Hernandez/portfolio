@@ -1,14 +1,10 @@
 ---
-// ------------ icons ------------ //
-import ArrowIcon from '@icons/ArrowIcon.astro';
-
 // ------------ components ------------ //
 import Layout from '@layouts/Layout.astro';
 import Card from '@components/Card.astro';
-import Link from '@components/Link.astro';
 import SectionContainer from '@components/SectionContainer.astro';
-import { Image } from 'astro:assets';
 import SkillCard from '@/components/SkillCard.astro';
+import { Image } from 'astro:assets';
 
 // ------------ content ------------ //
 import {
@@ -54,7 +50,7 @@ import CardHeader from '@/components/CardHeader.astro';
           <strong>Bogotá, Colombia</strong>, pero actualmente vivo en <strong
             >Medellín</strong
           >. Soy estudiante de Ingeniería Informática en la Universidad
-          Politécnico Jaime Isaza Cadavid.
+          Politécnico Colombiano Jaime Isaza Cadavid.
         </p>
         <p class="text-lg leading-relaxed text-pretty">
           Me motiva crear soluciones digitales modernas que tengan un impacto
@@ -76,15 +72,15 @@ import CardHeader from '@/components/CardHeader.astro';
           class="flex flex-col sm:flex-row flex-wrap gap-6 mt-8 sm:justify-center items-center sm:items-start"
         >
           <Card className="w-[250px] h-[350px]">
-            <CardHeader className="pl-4">Frontend</CardHeader>
+            <CardHeader className="text-center">Frontend</CardHeader>
             <SkillCard skills={FRONTEND_SKILLS} />
           </Card>
           <Card className="w-[250px] h-[350px]">
-            <CardHeader className="pl-4">Backend</CardHeader>
+            <CardHeader className="text-center">Backend</CardHeader>
             <SkillCard skills={BACKEND_SKILLS} />
           </Card>
           <Card className="w-[250px] h-[350px]">
-            <CardHeader className="pl-4">Herramientas</CardHeader>
+            <CardHeader className="text-center">Herramientas</CardHeader>
             <SkillCard skills={TOOLS_SKILLS} />
           </Card>
         </div>
