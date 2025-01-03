@@ -1,0 +1,20 @@
+---
+// ------------ Props ------------ //
+import type { Skill } from '@utils/constants.ts';
+
+export interface Props {
+  skills: Skill[];
+}
+const { skills } = Astro.props;
+---
+
+<ul class="flex flex-col gap-2">
+  {
+    skills.map((skill) => (
+      <li class="flex items-center gap-2">
+        <skill.icon class="size-6" />
+        {skill.name}
+      </li>
+    ))
+  }
+</ul>
