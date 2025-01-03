@@ -7,6 +7,9 @@ import Hero from '@components/Hero.astro';
 
 // ----------- layout ----------- //
 import Layout from '@layouts/Layout.astro';
+
+// ----------- content ----------- //
+import { PROJECTS } from '@utils/constants.ts';
 ---
 
 <Layout
@@ -14,6 +17,7 @@ import Layout from '@layouts/Layout.astro';
   description="Página principal del portfolio de CEhM, Carlos Eduardo Hernández Munévar, desarrollador Full-Stack y estudiante de Ingeniería de Sistemas en la Universidad Politécnico Jaime Isaza Cadavid."
 >
   <main
+    id="home"
     class="flex flex-col w-full max-w-[1000px] my-28 sm:my-20 gap-20 mx-auto"
   >
     <Hero />
@@ -21,7 +25,7 @@ import Layout from '@layouts/Layout.astro';
       <Experience />
     </SectionContainer>
     <SectionContainer id="projects">
-      <Projects />
+      <Projects projects={PROJECTS} />
     </SectionContainer>
   </main>
 </Layout>

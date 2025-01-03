@@ -1,0 +1,100 @@
+---
+// ------------ icons ------------ //
+import ArrowIcon from '@icons/ArrowIcon.astro';
+
+// ------------ components ------------ //
+import Layout from '@layouts/Layout.astro';
+import Card from '@components/Card.astro';
+import Link from '@components/Link.astro';
+import SectionContainer from '@components/SectionContainer.astro';
+import { Image } from 'astro:assets';
+import SkillCard from '@/components/SkillCard.astro';
+
+// ------------ content ------------ //
+import {
+  BACKEND_SKILLS,
+  FRONTEND_SKILLS,
+  TOOLS_SKILLS,
+} from '@utils/constants.ts';
+import CardHeader from '@/components/CardHeader.astro';
+---
+
+<Layout
+  title="Sobre CEhM - Desarrollador Full-Stack"
+  description="Descubre más sobre Carlos Eduardo Hernández Munévar, desarrollador Full-Stack con experiencia en tecnologías modernas y una pasión por el aprendizaje."
+>
+  <main
+    class="flex flex-col w-full max-w-[1000px] my-20 gap-16 mx-auto px-6 sm:px-10 justify-center text-center sm:text-left flex-wrap"
+  >
+    <!-- Introducción -->
+    <div class="w-full flex flex-col sm:flex-row justify-center gap-8">
+      <h1 class="text-2xl font-bold leading-tight text-balance sm:hidden">
+        ¡Hola! Soy Carlos Eduardo Hernández Munévar
+      </h1>
+      <Image
+        transition:name="hero"
+        class="rounded-lg object-cover mx-auto md:mx-0 md:w-2/5 max-w-xs w-full"
+        src="https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp"
+        alt="Foto de Carlos Eduardo Hernández Munévar"
+        height={300}
+        width={300}
+        loading="eager"
+      />
+      <div
+        class="w-full flex flex-col gap-6 items-center sm:items-start h-full"
+      >
+        <h1
+          class="text-2xl md:text-3xl font-bold leading-tight text-balance hidden sm:block"
+        >
+          ¡Hola! Soy Carlos Eduardo Hernández Munévar
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-pretty">
+          Tengo <strong>20 años</strong> y soy un apasionado desarrollador
+          <strong>Full-Stack</strong>. Nací en <strong>Bogotá, Colombia</strong
+          >, pero actualmente vivo en <strong>Medellín</strong>. Soy estudiante
+          de Ingeniería Informática en la Universidad Politécnico Jaime Isaza
+          Cadavid.
+        </p>
+        <p class="text-lg leading-relaxed text-pretty">
+          Me motiva crear soluciones digitales modernas que tengan un impacto
+          positivo. Disfruto trabajar con tecnologías como <strong
+            >JavaScript</strong
+          >,
+          <strong>Node.js</strong>, y <strong>Tailwind CSS</strong>. Estoy en
+          constante aprendizaje y siempre busco mejorar tanto a nivel técnico
+          como personal.
+        </p>
+        <Link
+          href="#contacto"
+          className="p-6 rounded-lg justify-self-end"
+          text="Contáctame"
+        >
+          <ArrowIcon />
+        </Link>
+      </div>
+    </div>
+    <SectionContainer>
+      <section>
+        <h2 class="text-4xl font-bold text-center">
+          Habilidades & Conocimientos
+        </h2>
+        <div
+          class="flex flex-col sm:flex-row flex-wrap gap-6 mt-8 sm:justify-center items-center sm:items-start"
+        >
+          <Card className="w-[250px] h-[350px]">
+            <CardHeader className="pl-4">Frontend</CardHeader>
+            <SkillCard skills={FRONTEND_SKILLS} />
+          </Card>
+          <Card className="w-[250px] h-[350px]">
+            <CardHeader className="pl-4">Backend</CardHeader>
+            <SkillCard skills={BACKEND_SKILLS} />
+          </Card>
+          <Card className="w-[250px] h-[350px]">
+            <CardHeader className="pl-4">Herramientas</CardHeader>
+            <SkillCard skills={TOOLS_SKILLS} />
+          </Card>
+        </div>
+      </section>
+    </SectionContainer>
+  </main>
+</Layout>

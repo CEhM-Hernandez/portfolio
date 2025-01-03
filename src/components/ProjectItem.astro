@@ -1,0 +1,88 @@
+---
+// ------------------- components ------------------- //
+import { Image } from 'astro:assets';
+import GitHubIcon from '@icons/GitHubIcon.astro';
+import LinkIcon from '@icons/LinkIcon.astro';
+
+// ------------------- types ------------------- //
+import type { Tags } from '@utils/constants.ts';
+
+interface Props {
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  demoUrl: string;
+  codeUrl: string;
+  tags: Tags[];
+}
+
+const { title, description, thumbnailUrl, demoUrl, codeUrl, tags } =
+  Astro.props;
+
+// ------------------- utils ---------------- //
+function titleToSlug(title: string): string {
+  return title.toLowerCase().replace(/\s/g, '-');
+}
+---
+
+<li>
+  <article
+    class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4"
+  >
+    <div
+      class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center"
+    >
+      <Image
+        transition:name={`project-${titleToSlug(title)}`}
+        src={thumbnailUrl}
+        alt={`Miniatura de la aplicación ${title} hecha con una captura de pantalla de la misma.`}
+        class="md:min-w-60 rounded-lg aspect-[4/3] sm:aspect-square object-cover object-center hover:scale-105 transition-transform duration-300 mx-auto w-full sm:max-w- md:max-w-[300px]"
+        width={300}
+        height={300}
+      />
+    </div>
+    <div class="flex flex-col gap-12 sm:gap-0 w-full sm:w-1/2 md:w-3/4">
+      <div class="flex flex-col gap-4">
+        <h3
+          class="text-2xl font-bold text-accent text-center sm:text-start text-balance"
+        >
+          {title}
+        </h3>
+        <p class="text-pretty">{description}</p>
+      </div>
+      <div
+        class="flex flex-row justify-center sm:justify-normal gap-2 h-full items-center flex-wrap"
+      >
+        {
+          tags.map((tag) => (
+            <span
+              class={`flex gap-1 text-center align-middle leading-7 justify-center items-center rounded-full max-h-7 px-2 py-1 text-main text-sm transition-colors duration-300 ${tag.class}`}
+            >
+              {tag.icon && <tag.icon class="size-5 rounded-md" />}
+              {tag.name}
+            </span>
+          ))
+        }
+      </div>
+      <div class="flex flex-row justify-center sm:justify-normal gap-4">
+        <a
+          href={demoUrl}
+          rel="noopener"
+          target="_blank"
+          class="flex items-center gap-1 leading-4 text-main hover:text-accent transition-all bg-secondary/90 hover:bg-secondary rounded-lg p-2 text-sm w-fit border border-main hover:border-accent duration-300 hover:scale-95 hover:underline decoration-wavy"
+        >
+          <LinkIcon class="size-5 stroke-2" />
+          Demo
+        </a>
+        <a
+          href={codeUrl}
+          rel="noopener"
+          target="_blank"
+          class="flex items-center gap-2 leading-4 text-main hover:text-accent transition-all bg-secondary/90 hover:bg-secondary rounded-lg p-2 text-sm w-fit border border-main hover:border-accent duration-300 hover:scale-95 hover:underline decoration-wavy"
+        >
+          <GitHubIcon class="size-5" /> Código
+        </a>
+      </div>
+    </div>
+  </article>
+</li>

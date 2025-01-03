@@ -1,20 +1,69 @@
 ---
+import CopyIcon from '@/assets/icons/CopyIcon.astro';
+
 // ----------- props ----------- //
 interface Props {
   href?: string;
   text: string;
-  id?: string;
+  hasCopy?: boolean;
 }
 
-const { text, href, id } = Astro.props;
+const { text, href, hasCopy } = Astro.props;
 ---
 
-<a
-  id={id}
-  href={href}
-  target="_blank"
-  rel="noopener noreferrer"
-  class="inline-flex items-center justify-center rounded-full px-2 py-1 text-sm min-w-20 font-medium gap-2 cursor-pointer hover:scale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20 hover:shadow-lg"
+<span
+  class="relative inline-flex items-center gap-2 hover:scale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20 hover:shadow-lg rounded-full px-2 py-1"
 >
-  <slot />{text}
-</a>
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 text-sm"
+  >
+    <slot />{text}
+  </a>
+  {
+    hasCopy && (
+      <button
+        class="copy-button border-l border-accent pl-2 stroke-main text-main text-sm"
+        data-text={text}
+        aria-label="Copiar dirección de correo"
+      >
+        <CopyIcon class="size-5" />
+      </button>
+    )
+  }
+</span>
+
+<script is:inline>
+  if (!window.copyButtonsInitialized) {
+    window.copyButtonsInitialized = true;
+
+    const copy = (button) => {
+      button.addEventListener('click', () => {
+        console.log('click');
+        const textToCopy = button.getAttribute('data-text');
+        if (textToCopy) {
+          navigator.clipboard.writeText(textToCopy);
+
+          const content = button.innerHTML;
+          button.textContent = '¡Copiado!';
+          setTimeout(() => {
+            button.innerHTML = content;
+          }, 5000);
+        }
+      });
+    };
+
+    const setupCopyButton = () => {
+      const copyButtons = document.querySelectorAll('.copy-button');
+      copyButtons.forEach((button) => copy(button));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupCopyButton);
+    }
+
+    document.addEventListener('astro:after-swap', setupCopyButton);
+  }
+</script>
