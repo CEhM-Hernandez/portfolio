@@ -1,14 +1,16 @@
 ---
 interface Props {
+  id?: string;
   className?: string;
   title?: string;
   clear?: boolean;
 }
 
-const { className = '', clear = false } = Astro.props;
+const { className = '', clear = false, id } = Astro.props;
 ---
 
 <div
+  id={id}
   class={clear
     ? `${className}`
     : `flex flex-col gap-4 bg-secondary backdrop-blur-lg rounded-lg p-4 shadow-lg overflow-auto ${className}`}

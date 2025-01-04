@@ -2,6 +2,7 @@
 // ------------ Props ------------ //
 import StarIcon from '@icons/StarIcon.astro';
 import type { Skill } from '@/types/types';
+import HalfStarIcon from '@/assets/icons/HalfStarIcon.astro';
 
 export interface Props {
   skills: Skill[];
@@ -31,17 +32,15 @@ const getStars = (level: number) => {
             {Array.from({ length: 3 }).map((_, index) => {
               const isHalfStar = hasHalfStar && index === fullStars;
               const isFullStar = index < fullStars;
-
-              return (
-                <StarIcon
-                  class={`size-5 ${
-                    isFullStar
-                      ? 'stroke-yellow-600 fill-yellow-600'
-                      : isHalfStar
-                        ? 'stroke-yellow-600 fill-yellow-600 half-star'
-                        : 'text-transparent'
-                  }`}
-                />
+              return isFullStar ? (
+                <StarIcon class="size-5 text-yellow-600" />
+              ) : isHalfStar ? (
+                <span class="relative flex">
+                  <StarIcon class="size-5 text-yellow-600 z-10 half-left-star" />
+                  <StarIcon class="size-5 fill-none stroke-yellow-600 absolute" />
+                </span>
+              ) : (
+                <StarIcon class="size-5 fill-none stroke-yellow-600" />
               );
             })}
           </div>

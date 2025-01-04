@@ -196,11 +196,11 @@ export const TOOLS_SKILLS: Skill[] = [
   {
     name: 'Figma',
     icon: FigmaIcon,
-    level: 2,
+    level: 1.5,
   },
   {
     name: 'Postman',
     icon: PostmanIcon,
-    level: 1.5,
+    level: 1,
   },
 ];

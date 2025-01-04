@@ -28,7 +28,7 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
   };
 
   const updateButtonLabel = (isDark) => {
-    const srOnlyElement = document.querySelector('span.sr-only');
+    const srOnlyElement = document.querySelector('#theme-button>span.sr-only');
     if (srOnlyElement)
       srOnlyElement.textContent = isDark
         ? 'Cambiar a tema claro'

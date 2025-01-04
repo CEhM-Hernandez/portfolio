@@ -7,16 +7,19 @@
   --main: 50, 50, 50;
   --secondary: 255, 255, 255;
   --accent: 0, 100, 200;
-  --details: 59, 130, 246;
 }
 
 .dark {
   --background: 18, 18, 18;
   --main: 224, 224, 224;
   --secondary: 52, 52, 52;
-  --details: 41, 50, 199;
 }
 
-.half-star {
-  clip-path: inset(0 50% 0 0);
+
+.half-left-star {
+  mask: linear-gradient(to right, #000 45%, transparent 0);
+}
+
+.half-right-star {
+  mask: linear-gradient(to left, #000 45%, transparent 0);
 }
