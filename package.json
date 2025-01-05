@@ -8,6 +8,9 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "author": {
+    "name": "Carlos Eduardo Hernández Munévar - CEhM"
+  },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
     "@fontsource/rubik": "^5.1.0",
