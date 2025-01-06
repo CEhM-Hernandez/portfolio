@@ -1,0 +1,125 @@
+---
+// ---------- components ---------- //
+import Pill from '@components/Pill.astro';
+import Input from '@components/form/Input.astro';
+
+// ---------- icons ---------- //
+import ArrowIcon from '@icons/ArrowIcon.astro';
+import CloseIcon from '@icons/CloseIcon.astro';
+import GmailIcon from '@icons/GmailIcon.astro';
+import LinkedInIcon from '@icons/LinkedInIcon.astro';
+import GitHubIcon from '@icons/GitHubIcon.astro';
+---
+
+<div
+  id="crud-modal"
+  aria-hidden="true"
+  class="hidden bg-black/60 backdrop-blur-sm overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full max-h-full"
+>
+  <div class="relative p-4 w-full max-w-lg max-h-full">
+    <div class="relative bg-secondary rounded-lg shadow">
+      <div
+        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-main/30"
+      >
+        <h3 class="text-lg font-semibold">Contacto</h3>
+        <button
+          type="button"
+          class="text-main/50 bg-transparent hover rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-background/30 hover:bg-slate-300 transition-colors duration-200"
+          data-modal-toggle="crud-modal"
+        >
+          <CloseIcon class="size-4" />
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="flex flex-col gap-4 p-4 md:p-5">
+        <form id="contact-form">
+          <h3 class="text-pretty mb-4">
+            ¿Tienes alguna pregunta o comentario? ¡Escríbeme!
+          </h3>
+          <div class="grid gap-4 mb-4 grid-cols-2">
+            <div class="col-span-2 sm:col-span-1">
+              <Input type="text" id="name" label="Nombre" required />
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <Input type="text" id="email" label="Email" required />
+            </div>
+            <div class="col-span-2">
+              <label for="message" class="block mb-2 text-sm font-medium"
+                >Mensaje
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="block p-2.5 w-full text-sm text-main bg-transparent rounded-lg border border-gray-300 focus:ring-accent focus:border-accent dark:border-main/30 placeholder-main/50"
+                placeholder="Escribe tu mensaje aquí..."></textarea>
+            </div>
+          </div>
+          <button
+            id="submit-contact-data"
+            type="submit"
+            class="text-white inline-flex items-center gap-2 bg-accent hover:saturate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-accent dark:focus:ring-blue-800 transition-[filter]"
+          >
+            Enviar Mensaje <ArrowIcon class="size-4" />
+          </button>
+        </form>
+        <span class="w-full h-[1px] dark:bg-gray-600"></span>
+        <ul class="flex gap-2 text-sm mx-auto">
+          <li>
+            <Pill
+              href="mailto:ceduardo.eh@gmail.com"
+              clear
+              className="inline-flex gap-2 text-xs p-2 bg-background rounded-lg border border-main/70 hover:scale-105 transition-transform"
+            >
+              <GmailIcon class="size-6" />
+              <span class="sr-only">Correo Electrónico</span>
+            </Pill>
+          </li>
+          <li>
+            <Pill
+              href="https://www.linkedin.com/in/eduardo-hernandez-munevar/"
+              clear
+              className="inline-flex gap-2 text-xs p-2 bg-background rounded-lg border border-main/70 hover:scale-105 transition-transform"
+            >
+              <LinkedInIcon class="size-6 text-[#0A66C2] dark:text-main" />
+              <span class="sr-only">LinkedIn</span>
+            </Pill>
+          </li>
+          <li>
+            <Pill
+              href="https://github.com/CEhM-Hernandez"
+              clear
+              className="inline-flex gap-2 text-xs p-2 bg-background rounded-lg border border-main/70 hover:scale-105 transition-transform"
+            >
+              <GitHubIcon class="size-6" />
+              <span class="sr-only">GitHub</span>
+            </Pill>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', setupSubmit);
+
+  function setupSubmit() {
+    const $form = document.getElementById('contact-form');
+    $form.addEventListener('formdata', handleSubmit);
+  }
+
+  function setupSubmit() {
+    const $form = document.getElementById('contact-form');
+    $form.addEventListener('submit', handleSubmit);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const data = Object.fromEntries(form.entries());
+
+    console.log(data);
+  }
+</script>

@@ -1,0 +1,32 @@
+---
+import HomeIcon from '@/assets/icons/HomeIcon.astro';
+import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
+---
+
+<Layout
+  title="404 - Página no encontrada"
+  description="La página que buscas no existe o ha sido movida."
+>
+  <section
+    class="p-6 flex gap-6 flex-col items-center justify-center text-center bg-secondary rounded-lg shadow-md"
+  >
+    <h1 class="text-6xl font-extrabold mb-4">404</h1>
+    <p class="text-2xl">¡Ups! No pudimos encontrar la página que buscas.</p>
+    <p>Es posible que haya sido movida o que la URL esté incorrecta.</p>
+    <div>
+      <a
+        href="/"
+        class="px-6 py-3 rounded-lg shadow bg-accent text-white flex items-center gap-2"
+      >
+        <HomeIcon /> Volver al inicio
+      </a>
+    </div>
+    <Image
+      src="/public/images/404-ilustration.svg"
+      alt="Ilustración de página no encontrada"
+      width={250}
+      height={250}
+    />
+  </section>
+</Layout>

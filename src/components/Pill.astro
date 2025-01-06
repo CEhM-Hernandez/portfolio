@@ -4,15 +4,19 @@ import CopyIcon from '@/assets/icons/CopyIcon.astro';
 // ----------- props ----------- //
 interface Props {
   href?: string;
-  text: string;
+  text?: string;
   hasCopy?: boolean;
+  clear?: boolean;
+  className?: string;
 }
 
-const { text, href, hasCopy } = Astro.props;
+const { text, href, hasCopy, clear, className = '' } = Astro.props;
 ---
 
 <span
-  class="relative inline-flex items-center gap-2 hover:scale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20 hover:shadow-lg rounded-full px-2 py-1"
+  class={clear
+    ? className
+    : 'relative inline-flex items-center gap-2 hover:scale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20 hover:shadow-lg rounded-full px-2 py-1'}
 >
   <a
     href={href}
@@ -25,9 +29,12 @@ const { text, href, hasCopy } = Astro.props;
   {
     hasCopy && (
       <button
-        class="copy-button border-l border-accent pl-2 stroke-main text-main text-sm"
+        class={
+          clear
+            ? 'copy-button border-l border-main/30 pl-2 stroke-main text-main text-sm'
+            : 'copy-button border-l border-accent pl-2 stroke-main text-main text-sm'
+        }
         data-text={text}
-        aria-label="Copiar dirección de correo"
       >
         <CopyIcon class="size-5" />
       </button>
@@ -41,11 +48,9 @@ const { text, href, hasCopy } = Astro.props;
 
     const copy = (button) => {
       button.addEventListener('click', () => {
-        console.log('click');
         const textToCopy = button.getAttribute('data-text');
         if (textToCopy) {
           navigator.clipboard.writeText(textToCopy);
-
           const content = button.innerHTML;
           button.textContent = '¡Copiado!';
           setTimeout(() => {
@@ -60,10 +65,6 @@ const { text, href, hasCopy } = Astro.props;
       copyButtons.forEach((button) => copy(button));
     };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupCopyButton);
-    }
-
-    document.addEventListener('astro:after-swap', setupCopyButton);
+    document.addEventListener('astro:page-load', setupCopyButton);
   }
 </script>
