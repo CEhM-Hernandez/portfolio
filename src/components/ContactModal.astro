@@ -42,7 +42,7 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
               <Input type="text" id="name" label="Nombre" required />
             </div>
             <div class="col-span-2 sm:col-span-1">
-              <Input type="text" id="email" label="Email" required />
+              <Input type="email" id="email" label="Email" required />
             </div>
             <div class="col-span-2">
               <label for="message" class="block mb-2 text-sm font-medium"
@@ -113,8 +113,28 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
   function handleSubmit(event) {
     event.preventDefault()
     const form = new FormData(event.target)
-    const data = Object.fromEntries(form.entries())
+    const rawData = Object.fromEntries(form.entries())
+
+    const message = `
+**Nuevo mensaje recibido desde el portafolio:**
+
+**Fecha:** ${new Date().toLocaleString()}
+**Nombre:** ${rawData.name}
+**Correo:** ${rawData.email}
+**Mensaje:** 
+\`\`\`
+${rawData.message}
+\`\`\`
+`
+
+    const data = {
+      userId: '716383787189272576',
+      message
+    }
     fetchData(data)
+
+    event.target.reset()
+    alert('Mensaje enviado correctamente')
   }
 
   function fetchData(data) {
