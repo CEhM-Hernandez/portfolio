@@ -1,13 +1,13 @@
 ---
 interface Props {
-  label: string;
-  id: string;
-  placeholder?: string;
-  type: 'text' | 'email' | 'tel';
-  required?: boolean;
+  label: string
+  id: string
+  placeholder?: string
+  type: 'text' | 'email' | 'tel'
+  required?: boolean
 }
 
-const { label, id, placeholder = '', type, required = false } = Astro.props;
+const { label, id, placeholder = '', type, required = false } = Astro.props
 ---
 
 <div class="relative">
@@ -15,6 +15,7 @@ const { label, id, placeholder = '', type, required = false } = Astro.props;
     type={type}
     id={id}
     name={id}
+    autocomplete="on"
     class="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border border-main/30 appearance-none dark:focus:border-accent focus:outline-none focus:ring-0 focus:saturate-150 peer"
     placeholder={placeholder}
     required={required}
