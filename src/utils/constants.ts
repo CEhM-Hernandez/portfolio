@@ -135,12 +135,12 @@ export const FRONTEND_SKILLS: Skill[] = [
   {
     name: 'JavaScript',
     icon: JavascriptIcon,
-    level: 2.5,
+    level: 2,
   },
   {
     name: 'TypeScript',
     icon: TypescriptIcon,
-    level: 2.5,
+    level: 2,
   },
   {
     name: 'React',
@@ -155,7 +155,7 @@ export const FRONTEND_SKILLS: Skill[] = [
   {
     name: 'Tailwind CSS',
     icon: TailwindIcon,
-    level: 3,
+    level: 2.5,
   },
   {
     name: 'Astro',
@@ -186,7 +186,7 @@ export const TOOLS_SKILLS: Skill[] = [
   {
     name: 'GitHub',
     icon: GitHubIcon,
-    level: 3,
+    level: 2.5,
   },
   {
     name: 'VSCode',

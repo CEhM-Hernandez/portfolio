@@ -51,9 +51,5 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
     }
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupThemeButton);
-  }
-
-  document.addEventListener('astro:after-swap', setupThemeButton);
+  document.addEventListener('astro:page-load', setupThemeButton);
 </script>

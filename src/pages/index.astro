@@ -10,20 +10,17 @@ import Layout from '@layouts/Layout.astro';
 
 // ----------- content ----------- //
 import { PROJECTS } from '@utils/constants.ts';
-import PageContainer from '@/components/PageContainer.astro';
 ---
 
 <Layout
   title="Portfolio de CEhM - Desarrollador Full-Stack"
   description="Página principal del portfolio de CEhM, Carlos Eduardo Hernández Munévar, desarrollador Full-Stack y estudiante de Ingeniería de Sistemas en la Universidad Politécnico Jaime Isaza Cadavid."
 >
-  <PageContainer>
-    <Hero />
-    <SectionContainer id="experience">
-      <Experience />
-    </SectionContainer>
-    <SectionContainer id="projects">
-      <Projects projects={PROJECTS} />
-    </SectionContainer>
-  </PageContainer>
+  <Hero />
+  <SectionContainer id="experience">
+    <Experience />
+  </SectionContainer>
+  <SectionContainer id="projects">
+    <Projects projects={PROJECTS} />
+  </SectionContainer>
 </Layout>

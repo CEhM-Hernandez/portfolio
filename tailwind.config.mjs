@@ -10,10 +10,7 @@ export default {
 				secondary: 'rgba(var(--secondary))',
 				accent: 'rgba(var(--accent))',
 				details: 'rgba(var(--details))',
-			},
-			fill: {
-        'half-star': 'inset(0,50%,0,0)', // Recorta la mitad izquierda
-      },
+			}
 		},
 	},
 	plugins: [],

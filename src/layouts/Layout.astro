@@ -10,6 +10,9 @@ import { ClientRouter } from 'astro:transitions';
 
 // ----------- config ----------- //
 import Analytics from '@vercel/analytics/astro';
+import ContactButton from '@/components/ContactButton.astro';
+import ContactModal from '@/components/ContactModal.astro';
+import PageContainer from '@/components/PageContainer.astro';
 
 // ----------- props ----------- //
 interface Props {
@@ -21,7 +24,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -32,7 +35,7 @@ const { title, description } = Astro.props;
     <ClientRouter />
     <title>{title}</title>
   </head>
-  <body class="relative text-main">
+  <body class="text-main relative">
     <div class="-z-10 absolute h-full w-full bg-background">
       <div
         class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_34px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
@@ -40,7 +43,11 @@ const { title, description } = Astro.props;
       </div>
     </div>
     <Header />
-    <slot />
+    <ContactButton />
+    <ContactModal />
+    <PageContainer>
+      <slot />
+    </PageContainer>
     <Footer />
   </body><style is:global>
     :root {
