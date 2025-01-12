@@ -1,14 +1,14 @@
 ---
 // ---------- components ---------- //
-import Pill from '@components/Pill.astro';
-import Input from '@components/form/Input.astro';
+import Pill from '@components/Pill.astro'
+import Input from '@components/form/Input.astro'
 
 // ---------- icons ---------- //
-import ArrowIcon from '@icons/ArrowIcon.astro';
-import CloseIcon from '@icons/CloseIcon.astro';
-import GmailIcon from '@icons/GmailIcon.astro';
-import LinkedInIcon from '@icons/LinkedInIcon.astro';
-import GitHubIcon from '@icons/GitHubIcon.astro';
+import ArrowIcon from '@icons/ArrowIcon.astro'
+import CloseIcon from '@icons/CloseIcon.astro'
+import GmailIcon from '@icons/GmailIcon.astro'
+import LinkedInIcon from '@icons/LinkedInIcon.astro'
+import GitHubIcon from '@icons/GitHubIcon.astro'
 ---
 
 <div
@@ -103,23 +103,31 @@ import GitHubIcon from '@icons/GitHubIcon.astro';
 </div>
 
 <script is:inline>
-  document.addEventListener('astro:page-load', setupSubmit);
+  document.addEventListener('astro:page-load', setupSubmit)
 
   function setupSubmit() {
-    const $form = document.getElementById('contact-form');
-    $form.addEventListener('formdata', handleSubmit);
-  }
-
-  function setupSubmit() {
-    const $form = document.getElementById('contact-form');
-    $form.addEventListener('submit', handleSubmit);
+    const $form = document.getElementById('contact-form')
+    $form.addEventListener('submit', handleSubmit)
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
-    const form = new FormData(event.target);
-    const data = Object.fromEntries(form.entries());
+    event.preventDefault()
+    const form = new FormData(event.target)
+    const data = Object.fromEntries(form.entries())
+    fetchData(data)
+  }
 
-    console.log(data);
+  function fetchData(data) {
+    try {
+      fetch('https://cehm-api.vercel.app/api/discord/send-dm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then((response) => response.json())
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 </script>

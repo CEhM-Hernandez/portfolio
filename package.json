@@ -17,6 +17,7 @@
     "@fontsource/rubik": "^5.1.0",
     "@vercel/analytics": "^1.4.1",
     "astro": "^5.1.1",
+    "discord.js": "^14.17.2",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
