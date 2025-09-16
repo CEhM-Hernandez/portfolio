@@ -9,6 +9,7 @@ import { Image } from 'astro:assets'
 
 // ------------ content ------------ //
 import { BACKEND_SKILLS, FRONTEND_SKILLS, TOOLS_SKILLS } from '@utils/constants.ts'
+import { Content as AboutContent, frontmatter } from '@/data/about.md'
 ---
 
 <Layout
@@ -17,12 +18,12 @@ import { BACKEND_SKILLS, FRONTEND_SKILLS, TOOLS_SKILLS } from '@utils/constants.
 >
   <div class="w-full flex flex-col sm:flex-row justify-center gap-8 text-center sm:text-left">
     <h1 class="text-2xl font-bold leading-tight text-balance sm:hidden">
-      ¡Hola! Soy Carlos Eduardo Hernández Munévar
+      {frontmatter.title}
     </h1>
     <Image
       transition:name="hero"
       class="rounded-lg object-cover mx-auto md:mx-0 md:w-2/5 max-w-xs w-full"
-      src="https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp"
+      src={frontmatter.profileImage}
       alt="Foto de Carlos Eduardo Hernández Munévar"
       height={300}
       width={300}
@@ -30,21 +31,13 @@ import { BACKEND_SKILLS, FRONTEND_SKILLS, TOOLS_SKILLS } from '@utils/constants.
     />
     <div class="w-full flex flex-col gap-6 items-center sm:items-start h-full">
       <h1 class="text-2xl md:text-3xl font-bold leading-tight text-balance hidden sm:block">
-        ¡Hola! Soy Carlos Eduardo Hernández Munévar
+        {frontmatter.title}
       </h1>
-      <p class="mt-6 text-lg leading-relaxed text-pretty">
-        Tengo <strong>20 años</strong> y soy un apasionado desarrollador trainee
-        <strong>Full-Stack</strong> con más de 3 meses de experiencia. Nací en
-        <strong>Bogotá, Colombia</strong>, pero actualmente vivo en <strong>Medellín</strong>. Soy
-        estudiante de Ingeniería Informática en la Universidad Politécnico Colombiano Jaime Isaza
-        Cadavid.
-      </p>
-      <p class="text-lg leading-relaxed text-pretty">
-        Me motiva crear soluciones digitales modernas que tengan un impacto positivo. Disfruto
-        trabajar con tecnologías como <strong>JavaScript</strong>,
-        <strong>Node.js</strong>, y <strong>Tailwind CSS</strong>. Estoy en constante aprendizaje y
-        siempre busco mejorar tanto a nivel técnico como personal.
-      </p>
+      <div
+        class="prose prose-lg max-w-none prose-strong:text-accent prose-headings:text-main prose-p:text-main prose-li:text-main"
+      >
+        <AboutContent />
+      </div>
     </div>
   </div>
   <SectionContainer>

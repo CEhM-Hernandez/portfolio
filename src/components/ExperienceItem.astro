@@ -3,16 +3,16 @@
 import RedirectIcon from '@icons/RedirectIcon.astro'
 
 // ----------- props ----------- //
-import type { Enterprice } from '@/types/types'
+import type { Enterprise } from '@/types/types'
 
 interface Props {
   title: string
   date: string
-  enterprice: Enterprice
+  enterprise: Enterprise
   description: string
 }
 
-const { title, date, description, enterprice } = Astro.props
+const { title, date, description, enterprise } = Astro.props
 ---
 
 <div
@@ -26,18 +26,18 @@ const { title, date, description, enterprice } = Astro.props
       {title}
     </h3>
     {
-      enterprice.link ? (
+      enterprise.link ? (
         <a
-          href={enterprice.link}
+          href={enterprise.link}
           class="text-main/70 inline-flex justify-center items-center text-center align-middle gap-2 hover:text-accent w-fit transition duration-300 font-bold decoration-wavy hover:underline leading-5"
           rel="noopener noreferrer"
           target="_blank"
         >
-          {enterprice.name}
+          {enterprise.name}
           <RedirectIcon />
         </a>
       ) : (
-        <p class="text-main/60 font-bold leading-5">{enterprice.name}</p>
+        <p class="text-main/60 font-bold leading-5">{enterprise.name}</p>
       )
     }
   </div>

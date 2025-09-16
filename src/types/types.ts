@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export interface Enterprice {
+export interface Enterprise {
   name: string
   link?: string
 }
@@ -8,7 +8,7 @@ export interface Enterprice {
 export interface Experience {
   date: string
   title: string
-  enterprice: Enterprice
+  enterprise: Enterprise
   description: string
 }
 
@@ -31,4 +31,23 @@ export interface Skill {
   name: string
   icon: any
   level: number
+}
+
+export interface PersonalInfo {
+  name: string
+  fullName: string
+  title: string
+  description: string
+  profileImage: string
+  contacts: {
+    email: string
+    linkedin: string
+    github: string
+  }
+}
+
+export interface AboutInfo {
+  title: string
+  description: string
+  profileImage: string
 }

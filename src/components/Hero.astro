@@ -9,6 +9,11 @@ import ArrowIcon from '@icons/ArrowIcon.astro'
 import Pill from '@components/Pill.astro'
 import Link from '@components/Link.astro'
 import { Image } from 'astro:assets'
+
+// ----------- types & constants ----------- //
+import { PERSONAL_INFO } from '@/utils/constants'
+
+const { name, title, description, profileImage, contacts } = PERSONAL_INFO
 ---
 
 <article class="flex flex-col items-center lg:flex-row gap-6 lg:gap-4 justify-between w-full">
@@ -19,7 +24,7 @@ import { Image } from 'astro:assets'
       <Image
         transition:name="hero"
         class="rounded-lgobject-center object-cover w-60 sm:w-48"
-        src="https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp"
+        src={profileImage}
         alt="Foto de Carlos Eduardo Hernández Munévar"
         height={300}
         width={300}
@@ -28,14 +33,12 @@ import { Image } from 'astro:assets'
     </div>
     <div class="flex flex-col h-full w-full gap-6 p-4">
       <h1 class="text-3xl font-bold">
-        ¡Hola, soy <strong>Eduardo</strong>!
+        ¡Hola, soy <span class="text-pretty">{name}</span>!<br />
+        <span class="text-lg font-medium">{title}</span>
       </h1>
       <div class="flex flex-col gap-4 items-center lg:items-start">
         <p class="text-lg text-pretty">
-          Mi nombre es Carlos Eduardo Hernández Munévar y soy un desarrollador <strong
-            >full-stack trainee y estudiante de Ingeniería Informática con experiencia profesional
-            en JavaScript</strong
-          >, enfocado en crear soluciones escalables y eficientes.
+          {description}
         </p>
         <Link href="/about" text="Más sobre mi">
           <ArrowIcon />
@@ -45,17 +48,17 @@ import { Image } from 'astro:assets'
   </section>
   <ul class="flex flex-row lg:flex-col items-center justify-center gap-6 flex-wrap mx-4 md:mx-0">
     <li>
-      <Pill text="ceduardo.eh@gmail.com" href="mailto:ceduardo.eh@gmail.com" hasCopy>
+      <Pill text={contacts.email} href={`mailto:${contacts.email}`} hasCopy>
         <GmailIcon />
       </Pill>
     </li>
     <li>
-      <Pill text="LinkedIn" href="https://www.linkedin.com/in/eduardo-hernandez-munevar/">
+      <Pill text="LinkedIn" href={contacts.linkedin}>
         <LinkedInIcon />
       </Pill>
     </li>
     <li>
-      <Pill text="GitHub" href="https://github.com/CEhM-Hernandez">
+      <Pill text="GitHub" href={contacts.github}>
         <GitHubIcon />
       </Pill>
     </li>
