@@ -1,13 +1,13 @@
 ---
 // ------------------- icons ------------------- //
-import WorkIcon from '@icons/WorkIcon.astro';
-import HomeIcon from '@icons/HomeIcon.astro';
-import DevIcon from '@icons/DevIcon.astro';
+import WorkIcon from '@icons/WorkIcon.astro'
+import HomeIcon from '@icons/HomeIcon.astro'
+import DevIcon from '@icons/DevIcon.astro'
 
 // ------------------- components ------------------- //
-import HeaderButton from '@components/HeaderButton.astro';
-import ThemeButton from '@components/ThemeButton.astro';
-import UserIcon from '@/assets/icons/UserIcon.astro';
+import HeaderButton from '@components/HeaderButton.astro'
+import ThemeButton from '@components/ThemeButton.astro'
+import UserIcon from '@/assets/icons/UserIcon.astro'
 ---
 
 <header
@@ -31,25 +31,25 @@ import UserIcon from '@/assets/icons/UserIcon.astro';
 </header>
 
 <script>
-  let isTop = false;
+  let isTop = false
 
   function handleScroll() {
-    isTop = window.scrollY === 0;
+    isTop = window.scrollY === 0
 
-    const $header = document.querySelector('header');
+    const $header = document.querySelector('header')
 
     if (isTop) {
-      $header?.classList.add('bg-transparent');
-      $header?.classList.remove('bg-secondary');
+      $header?.classList.add('bg-transparent')
+      $header?.classList.remove('bg-secondary')
     } else {
-      $header?.classList.remove('bg-transparent');
-      $header?.classList.add('bg-secondary');
+      $header?.classList.remove('bg-transparent')
+      $header?.classList.add('bg-secondary')
     }
   }
 
   window.onload = () => {
-    handleScroll();
+    handleScroll()
 
-    window.addEventListener('scroll', handleScroll);
-  };
+    window.addEventListener('scroll', handleScroll)
+  }
 </script>

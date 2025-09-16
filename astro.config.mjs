@@ -1,9 +1,9 @@
-import { defineConfig } from 'astro/config';
-import compression from 'vite-plugin-compression';
+import { defineConfig } from 'astro/config'
+import compression from 'vite-plugin-compression'
 
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel'
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   integrations: [],
@@ -13,15 +13,18 @@ export default defineConfig({
       minify: 'esbuild',
       rollupOptions: {
         output: {
-          manualChunks: undefined,
-        },
-      },
+          manualChunks: undefined
+        }
+      }
     },
-    plugins: [compression({
-      algorithm: 'brotliCompress',
-      threshold: 1024,
-    }), tailwindcss()],
+    plugins: [
+      compression({
+        algorithm: 'brotliCompress',
+        threshold: 1024
+      }),
+      tailwindcss()
+    ]
   },
 
-  adapter: vercel(),
-});
+  adapter: vercel()
+})

@@ -1,16 +1,16 @@
 ---
-import CopyIcon from '@/assets/icons/CopyIcon.astro';
+import CopyIcon from '@/assets/icons/CopyIcon.astro'
 
 // ----------- props ----------- //
 interface Props {
-  href?: string;
-  text?: string;
-  hasCopy?: boolean;
-  clear?: boolean;
-  className?: string;
+  href?: string
+  text?: string
+  hasCopy?: boolean
+  clear?: boolean
+  className?: string
 }
 
-const { text, href, hasCopy, clear, className = '' } = Astro.props;
+const { text, href, hasCopy, clear, className = '' } = Astro.props
 ---
 
 <span
@@ -18,12 +18,7 @@ const { text, href, hasCopy, clear, className = '' } = Astro.props;
     ? className
     : 'relative inline-flex items-center gap-2 hover:scale-105 transition-all duration-300 border border-accent hover:bg-accent/20 bg-ease-in-out transform/20 hover:shadow-lg rounded-full px-2 py-1'}
 >
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="flex items-center gap-2 text-sm"
-  >
+  <a href={href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm">
     <slot />{text}
   </a>
   {
@@ -44,27 +39,27 @@ const { text, href, hasCopy, clear, className = '' } = Astro.props;
 
 <script is:inline>
   if (!window.copyButtonsInitialized) {
-    window.copyButtonsInitialized = true;
+    window.copyButtonsInitialized = true
 
     const copy = (button) => {
       button.addEventListener('click', () => {
-        const textToCopy = button.getAttribute('data-text');
+        const textToCopy = button.getAttribute('data-text')
         if (textToCopy) {
-          navigator.clipboard.writeText(textToCopy);
-          const content = button.innerHTML;
-          button.textContent = '¡Copiado!';
+          navigator.clipboard.writeText(textToCopy)
+          const content = button.innerHTML
+          button.textContent = '¡Copiado!'
           setTimeout(() => {
-            button.innerHTML = content;
-          }, 5000);
+            button.innerHTML = content
+          }, 5000)
         }
-      });
-    };
+      })
+    }
 
     const setupCopyButton = () => {
-      const copyButtons = document.querySelectorAll('.copy-button');
-      copyButtons.forEach((button) => copy(button));
-    };
+      const copyButtons = document.querySelectorAll('.copy-button')
+      copyButtons.forEach((button) => copy(button))
+    }
 
-    document.addEventListener('astro:page-load', setupCopyButton);
+    document.addEventListener('astro:page-load', setupCopyButton)
   }
 </script>

@@ -1,37 +1,32 @@
 ---
 // ------------------- components ------------------- //
-import { Image } from 'astro:assets';
-import GitHubIcon from '@icons/GitHubIcon.astro';
-import LinkIcon from '@icons/LinkIcon.astro';
+import { Image } from 'astro:assets'
+import GitHubIcon from '@icons/GitHubIcon.astro'
+import LinkIcon from '@icons/LinkIcon.astro'
 
 // ------------------- types ------------------- //
-import type { Tags } from '@utils/constants.ts';
+import type { Tags } from '@utils/constants.ts'
 
 interface Props {
-  title: string;
-  description: string;
-  thumbnailUrl: string;
-  demoUrl: string;
-  codeUrl: string;
-  tags: Tags[];
+  title: string
+  description: string
+  thumbnailUrl: string
+  demoUrl: string
+  codeUrl: string
+  tags: Tags[]
 }
 
-const { title, description, thumbnailUrl, demoUrl, codeUrl, tags } =
-  Astro.props;
+const { title, description, thumbnailUrl, demoUrl, codeUrl, tags } = Astro.props
 
 // ------------------- utils ---------------- //
 function titleToSlug(title: string): string {
-  return title.toLowerCase().replace(/\s/g, '-');
+  return title.toLowerCase().replace(/\s/g, '-')
 }
 ---
 
 <li>
-  <article
-    class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4"
-  >
-    <div
-      class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center"
-    >
+  <article class="flex flex-col sm:flex-row border border-main/15 p-4 rounded-lg gap-4">
+    <div class="w-full sm:w-fit rounded-lg overflow-hidden flex justify-center items-center">
       <Image
         transition:name={`project-${titleToSlug(title)}`}
         src={thumbnailUrl}
@@ -43,9 +38,7 @@ function titleToSlug(title: string): string {
     </div>
     <div class="flex flex-col gap-12 sm:gap-0 w-full sm:w-1/2 md:w-3/4">
       <div class="flex flex-col gap-4">
-        <h3
-          class="text-2xl font-bold text-accent text-center sm:text-start text-balance"
-        >
+        <h3 class="text-2xl font-bold text-accent text-center sm:text-start text-balance">
           {title}
         </h3>
         <p class="text-pretty">{description}</p>

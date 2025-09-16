@@ -1,17 +1,17 @@
 ---
 // ----------- components ----------- //
-import ProjectItem from '@/components/ProjectItem.astro';
-import DevIcon from '@icons/DevIcon.astro';
+import ProjectItem from '@/components/ProjectItem.astro'
+import DevIcon from '@icons/DevIcon.astro'
 
 // ----------- types & constants ----------- //
-import type { Project } from '@utils/constants.ts';
+import type { Project } from '@utils/constants.ts'
 
 interface Props {
-  title?: string;
-  projects: Project[];
+  title?: string
+  projects: Project[]
 }
 
-const { projects, title } = Astro.props;
+const { projects, title } = Astro.props
 ---
 
 <article class="flex flex-col gap-12">
@@ -21,18 +21,16 @@ const { projects, title } = Astro.props;
 
   <ul class="flex flex-col gap-4">
     {
-      projects.map(
-        ({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
-          <ProjectItem
-            title={title}
-            description={description}
-            thumbnailUrl={thumbnailUrl}
-            tags={tags}
-            codeUrl={codeUrl}
-            demoUrl={demoUrl}
-          />
-        )
-      )
+      projects.map(({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
+        <ProjectItem
+          title={title}
+          description={description}
+          thumbnailUrl={thumbnailUrl}
+          tags={tags}
+          codeUrl={codeUrl}
+          demoUrl={demoUrl}
+        />
+      ))
     }
   </ul>
 </article>

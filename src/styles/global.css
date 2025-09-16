@@ -33,7 +33,6 @@
   --secondary: 52, 52, 52;
 }
 
-
 .half-left-star {
   mask: linear-gradient(to right, #000 45%, transparent 0);
 }

@@ -1,5 +1,5 @@
 ---
-import PhoneIcon from '@/assets/icons/PhoneIcon.astro';
+import PhoneIcon from '@/assets/icons/PhoneIcon.astro'
 ---
 
 <button
@@ -8,32 +8,27 @@ import PhoneIcon from '@/assets/icons/PhoneIcon.astro';
   class="z-40 fixed bottom-6 right-6 p-4 md:bottom-10 md:right-10 xl:bottom-20 xl:right-36 sm:px-5 sm:py-2.5 flex gap-2 justify-center items-center text-white bg-accent hover:saturate-200 focus:outline-hidden font-medium rounded-lg text-center transition-[filter]"
   type="button"
 >
-  <PhoneIcon class="size-5" /><span class="sr-only sm:not-sr-only"
-    >Contáctame</span
-  >
+  <PhoneIcon class="size-5" /><span class="sr-only sm:not-sr-only">Contáctame</span>
 </button>
 
 <script is:inline>
   function toggleModal() {
-    const $modal = document.querySelector('#crud-modal');
-    const $modalContent = $modal.firstElementChild;
+    const $modal = document.querySelector('#crud-modal')
 
-    const isHidden = $modal.classList.contains('hidden');
+    const isHidden = $modal.classList.contains('hidden')
 
-    $modal.classList.toggle('hidden', !isHidden);
-    $modal.classList.toggle('flex', isHidden);
-    $modal.setAttribute('aria-hidden', !isHidden);
+    $modal.classList.toggle('hidden', !isHidden)
+    $modal.classList.toggle('flex', isHidden)
+    $modal.setAttribute('aria-hidden', !isHidden)
   }
 
   function setupButton() {
-    const $buttons = document.querySelectorAll(
-      '[data-modal-toggle="crud-modal"]'
-    );
+    const $buttons = document.querySelectorAll('[data-modal-toggle="crud-modal"]')
 
     $buttons.forEach(($button) => {
-      $button.addEventListener('click', toggleModal);
-    });
+      $button.addEventListener('click', toggleModal)
+    })
   }
 
-  document.addEventListener('astro:page-load', setupButton);
+  document.addEventListener('astro:page-load', setupButton)
 </script>
