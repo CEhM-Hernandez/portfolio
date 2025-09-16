@@ -10,20 +10,36 @@ export default [
   // TypeScript rules
   ...tseslint.configs.recommended,
 
+  // Specific TypeScript configuration
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: './tsconfig.json'
+      }
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/strict-boolean-expressions': 'off'
+    }
+  },
+
   // Astro configuration
   ...astroPlugin.configs.recommended,
 
   // Prettier config to disable conflicting rules
   prettierConfig,
 
-  // Custom rules
+  // Custom rules for all files
   {
     rules: {
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': 'off',
-      'prefer-const': 'error'
+      'prefer-const': 'error',
+      'no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'error'
     }
   },
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface Enterprice {
   name: string
   link?: string
@@ -10,12 +12,10 @@ export interface Experience {
   description: string
 }
 
-export type AstroIconComponent = (props?: { class?: string; [key: string]: unknown }) => unknown
-
 export interface Tags {
   name: string
   class: string
-  icon?: AstroIconComponent
+  icon?: any
 }
 
 export interface Project {
@@ -29,6 +29,6 @@ export interface Project {
 
 export interface Skill {
   name: string
-  icon: AstroIconComponent
+  icon: any
   level: number
 }
