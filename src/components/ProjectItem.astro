@@ -11,7 +11,7 @@ interface Props {
   title: string
   description: string
   thumbnailUrl: string
-  demoUrl: string
+  demoUrl?: string
   codeUrl?: string
   tags: Tags[]
 }
@@ -36,7 +36,7 @@ function titleToSlug(title: string): string {
   >
     <div class="flex flex-col lg:flex-row gap-6">
       <div
-        class="w-full lg:w-80 xl:w-96 rounded-xl overflow-hidden bg-main/5 flex justify-center items-center"
+        class="max-h-90 rounded-xl overflow-hidden bg-main/5 flex justify-center items-center dark:bg-amber-50 aspect-[3/4]"
       >
         <Image
           transition:name={`project-${titleToSlug(title)}`}
@@ -76,19 +76,28 @@ function titleToSlug(title: string): string {
         </div>
 
         <div class="flex flex-wrap gap-3">
-          <a
-            href={demoUrl}
-            rel="noopener"
-            target="_blank"
-            class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-main hover:text-accent bg-secondary/90 hover:bg-secondary border border-main/20 hover:border-accent rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-md group/demo"
-          >
-            <LinkIcon
-              class="w-4 h-4 group-hover/demo:translate-x-0.5 transition-transform duration-300"
-            />
-            Ver Demo
-          </a>
           {
-            codeUrl && (
+            demoUrl ? (
+              <a
+                href={demoUrl}
+                rel="noopener"
+                target="_blank"
+                class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-main hover:text-accent bg-secondary/90 hover:bg-secondary border border-main/20 hover:border-accent rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-md group/demo"
+              >
+                <LinkIcon class="w-4 h-4 group-hover/demo:translate-x-0.5 transition-transform duration-300" />
+                Ver Demo
+              </a>
+            ) : (
+              <button
+                class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-main bg-secondary/90 border border-main/20 rounded-lg transition-all duration-300 hover:shadow-md hover:cursor-not-allowed text-red-500"
+                disabled
+              >
+                Demo No Disponible
+              </button>
+            )
+          }
+          {
+            codeUrl ? (
               <a
                 href={codeUrl}
                 rel="noopener"
@@ -98,6 +107,13 @@ function titleToSlug(title: string): string {
                 <GitHubIcon class="w-4 h-4 group-hover/code:rotate-12 transition-transform duration-300" />
                 Ver Código
               </a>
+            ) : (
+              <button
+                class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-main bg-secondary/90 border border-main/20 rounded-lg transition-all duration-300 hover:shadow-md hover:cursor-not-allowed text-red-500"
+                disabled
+              >
+                Código No Disponible
+              </button>
             )
           }
         </div>

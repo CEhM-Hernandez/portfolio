@@ -3,7 +3,7 @@ title: '¡Hola! Soy Carlos Eduardo Hernández Munévar'
 profileImage: 'https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp'
 ---
 
-Soy un apasionado desarrollador Junior **Full-Stack** con alrededor de un año de experiencia. Nací en **Bogotá, Colombia**, pero actualmente vivo en **Medellín**. Soy estudiante de Ingeniería Informática en la Universidad Politécnico Colombiano Jaime Isaza Cadavid.
+Soy un desarrollador Junior **Full-Stack** con alrededor de un año de experiencia. Nací en **Bogotá, Colombia**, pero actualmente vivo en **Medellín**. Soy estudiante de Ingeniería Informática en la Universidad Politécnico Colombiano Jaime Isaza Cadavid.
 
 <br>
 
@@ -11,4 +11,4 @@ Disfruto trabajar con tecnologías como **JavaScript**, **Node.js**, y el fronte
 
 <br>
 
-Creo firmemente en escribir código que no solo funcione, sino que sea **mantenible**, **escalable** y **comprensible**. Mi objetivo es crear aplicaciones que mejoren la experiencia del usuario final mientras mantengo las mejores prácticas de desarrollo.
+Creo firmemente en escribir código que no solo funcione, sino que sea **mantenible**, **escalable** y **comprensible**. Mi objetivo es crear aplicaciones que mejoren la experiencia del usuario final mientras facilito el trabajo para mi y para mi equipo.

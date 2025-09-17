@@ -20,7 +20,7 @@ export interface Tags {
 
 export interface Project {
   title: string
-  demoUrl: string
+  demoUrl?: string
   codeUrl?: string
   description: string
   thumbnailUrl: string
