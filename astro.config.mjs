@@ -13,9 +13,17 @@ export default defineConfig({
       minify: 'esbuild',
       rollupOptions: {
         output: {
-          manualChunks: undefined
+          manualChunks: undefined,
+          assetFileNames: (assetInfo) => {
+            const extType = assetInfo.names.split('.').at(1)
+            if (/css/.test(extType)) {
+              return 'assets/css/[name]-[hash][extname]'
+            }
+            return 'assets/[name]-[hash][extname]'
+          }
         }
-      }
+      },
+      cssCodeSplit: false
     },
     plugins: [
       compression({
@@ -26,5 +34,9 @@ export default defineConfig({
     ]
   },
 
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  })
 })

@@ -29,6 +29,78 @@ const { title, description } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <style>
+      :root {
+        color-scheme: light dark;
+        scroll-behavior: smooth;
+        --theme-transition: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: var(--theme-transition, 0.3s);
+      }
+
+      html {
+        font-family: 'Rubik', system-ui, sans-serif;
+        font-weight: 400;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: inherit;
+        font-weight: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        transition:
+          color 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .dark {
+        color-scheme: dark;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+
+    <script>
+      ;(function () {
+        const getTheme = () => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme')
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark'
+          }
+          return 'light'
+        }
+
+        const theme = getTheme()
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      })()
+    </script>
+
     <Analytics />
     <ClientRouter />
     <title>{title}</title>
@@ -61,10 +133,9 @@ const { title, description } = Astro.props
         updateButtonLabel()
       }
 
-      applyThemeImmediate()
-
       document.addEventListener('astro:before-preparation', applyThemeImmediate)
       document.addEventListener('astro:after-swap', applyThemeImmediate)
+      document.addEventListener('astro:page-load', applyThemeImmediate)
     </script>
   </head>
   <body class="text-main relative">
@@ -82,27 +153,8 @@ const { title, description } = Astro.props
     </PageContainer>
     <Footer />
   </body><style is:global>
-    :root {
-      color-scheme: light dark;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Rubik', system-ui, sans-serif;
-      font-weight: 400;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
     strong {
       color: rgba(var(--accent));
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto !important;
-      }
     }
   </style>
 </html>
