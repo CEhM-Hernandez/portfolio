@@ -7,17 +7,35 @@ import ExperienceItem from '@components/ExperienceItem.astro'
 import { EXPERIENCE } from '@utils/constants.ts'
 ---
 
-<article id="experience" class="flex flex-col gap-12">
-  <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10 text-balance">
-    <WorkIcon class="size-10" />Experiencia Laboral
-  </h2>
-  <ol class="relative border-s-2 border-main/20 dark:border-secondary w-full">
-    {
-      EXPERIENCE.map((experience) => (
-        <li class="mb-10 ms-4">
-          <ExperienceItem {...experience} />
-        </li>
-      ))
-    }
-  </ol>
+<article id="experience" class="flex flex-col gap-8 sm:gap-12">
+  <header class="flex items-center gap-3 sm:gap-4">
+    <div
+      class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-accent/10 rounded-xl border border-accent/20 backdrop-blur-sm"
+    >
+      <WorkIcon class="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
+    </div>
+    <div class="flex flex-col gap-1">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent text-balance leading-tight">
+        Experiencia Laboral
+      </h2>
+      <p class="text-sm text-main/60 font-medium">Mi trayectoria profesional y crecimiento</p>
+    </div>
+  </header>
+
+  <div class="relative">
+    <div
+      class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/60 to-accent/20"
+    >
+    </div>
+
+    <ol class="space-y-8 sm:space-y-12 ml-2 sm:ml-4">
+      {
+        EXPERIENCE.map((experience) => (
+          <li class="pl-8 sm:pl-12">
+            <ExperienceItem {...experience} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </article>
