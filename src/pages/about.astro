@@ -43,17 +43,17 @@ import { Content as AboutContent, frontmatter } from '@/data/about.md'
       Habilidades <strong>&</strong> Conocimientos
     </h2>
     <div
-      class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] justify-items-center gap-4 mt-8"
+      class="flex flex-col sm:flex-row flex-wrap justify-center items-center sm:items-stretch gap-6 mt-8"
     >
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Frontend</CardHeader>
         <SkillCard skills={FRONTEND_SKILLS} />
       </Card>
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Backend</CardHeader>
         <SkillCard skills={BACKEND_SKILLS} />
       </Card>
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Herramientas</CardHeader>
         <SkillCard skills={TOOLS_SKILLS} />
       </Card>
