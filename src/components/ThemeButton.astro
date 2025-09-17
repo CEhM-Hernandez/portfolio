@@ -12,44 +12,24 @@ import ThemeIcon from '@icons/ThemeIcon.astro';
 </button>
 
 <script is:inline>
-  const getThemePreferences = () => {
-    return (
-      localStorage.getItem('theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light')
-    );
-  };
-
-  const applyTheme = () => {
-    const isDark = getThemePreferences() === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    updateButtonLabel(isDark);
-  };
-
-  const updateButtonLabel = (isDark) => {
-    const srOnlyElement = document.querySelector('#theme-button>span.sr-only');
-    if (srOnlyElement)
-      srOnlyElement.textContent = isDark
-        ? 'Cambiar a tema claro'
-        : 'Cambiar a tema oscuro';
-  };
-
-  const toggleTheme = () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    document.documentElement.classList.toggle('dark', !isDark);
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    updateButtonLabel(!isDark);
-  };
-
   const setupThemeButton = () => {
-    applyTheme();
-    const button = document.getElementById('theme-button');
+    const isDark = document.documentElement.classList.contains('dark')
+    const srOnlyElement = document.querySelector('#theme-button>span.sr-only')
+    if (srOnlyElement) {
+      srOnlyElement.textContent = isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+    }
+
+    const button = document.getElementById('theme-button')
     if (button && !button.dataset.initialized) {
-      button.addEventListener('click', toggleTheme);
-      button.dataset.initialized = 'true';
+      button.addEventListener('click', () => {
+        if (window.toggleTheme) {
+          window.toggleTheme()
+        }
+      })
+      button.dataset.initialized = 'true'
     }
   };
 
-  document.addEventListener('astro:page-load', setupThemeButton);
+  document.addEventListener('astro:page-load', setupThemeButton)
+  document.addEventListener('DOMContentLoaded', setupThemeButton)
 </script>

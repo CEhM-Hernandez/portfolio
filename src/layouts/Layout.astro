@@ -34,6 +34,40 @@ const { title, description } = Astro.props;
     <Analytics />
     <ClientRouter />
     <title>{title}</title>
+
+    <script is:inline>
+      const getThemePreferences = () => {
+        return (
+          localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        )
+      }
+
+      const applyThemeImmediate = () => {
+        const isDark = getThemePreferences() === 'dark'
+        document.documentElement.classList.toggle('dark', isDark)
+      }
+
+      window.toggleTheme = () => {
+        const isDark = document.documentElement.classList.contains('dark')
+        const newTheme = isDark ? 'light' : 'dark'
+        document.documentElement.classList.toggle('dark', !isDark)
+        localStorage.setItem('theme', newTheme)
+
+        const updateButtonLabel = () => {
+          const srOnlyElement = document.querySelector('#theme-button>span.sr-only')
+          if (srOnlyElement) {
+            srOnlyElement.textContent = !isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+          }
+        }
+        updateButtonLabel()
+      }
+
+      applyThemeImmediate()
+
+      document.addEventListener('astro:before-preparation', applyThemeImmediate)
+      document.addEventListener('astro:after-swap', applyThemeImmediate)
+    </script>
   </head>
   <body class="text-main relative">
     <div class="-z-10 absolute h-full w-full bg-background">
