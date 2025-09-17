@@ -14,10 +14,10 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
 <div
   id="crud-modal"
   aria-hidden="true"
-  class="hidden bg-black/60 backdrop-blur-sm overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full max-h-full"
+  class="hidden bg-black/60 backdrop-blur-xs overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full max-h-full"
 >
   <div class="relative p-4 w-full max-w-lg max-h-full">
-    <div class="relative bg-secondary rounded-lg shadow">
+    <div class="relative bg-secondary rounded-lg shadow-sm">
       <div
         class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-main/30"
       >
@@ -34,9 +34,7 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
       <!-- Modal body -->
       <div class="flex flex-col gap-4 p-4 md:p-5">
         <form id="contact-form">
-          <h3 class="text-pretty mb-4">
-            ¿Tienes alguna pregunta o comentario? ¡Escríbeme!
-          </h3>
+          <h3 class="text-pretty mb-4">¿Tienes alguna pregunta o comentario? ¡Escríbeme!</h3>
           <div class="grid gap-4 mb-4 grid-cols-2">
             <div class="col-span-2 sm:col-span-1">
               <Input type="text" id="name" label="Nombre" required />
@@ -45,9 +43,7 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
               <Input type="email" id="email" label="Email" required />
             </div>
             <div class="col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium"
-                >Mensaje
-              </label>
+              <label for="message" class="block mb-2 text-sm font-medium">Mensaje </label>
               <textarea
                 id="message"
                 name="message"
@@ -59,12 +55,12 @@ import GitHubIcon from '@icons/GitHubIcon.astro'
           <button
             id="submit-contact-data"
             type="submit"
-            class="text-white inline-flex items-center gap-2 bg-accent hover:saturate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-accent dark:focus:ring-blue-800 transition-[filter]"
+            class="text-white inline-flex items-center gap-2 bg-accent hover:saturate-200 focus:ring-4 focus:outline-hidden focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-accent dark:focus:ring-blue-800 transition-[filter]"
           >
             Enviar Mensaje <ArrowIcon class="size-4" />
           </button>
         </form>
-        <span class="w-full h-[1px] dark:bg-gray-600"></span>
+        <span class="w-full h-px dark:bg-gray-600"></span>
         <ul class="flex gap-2 text-sm mx-auto">
           <li>
             <Pill

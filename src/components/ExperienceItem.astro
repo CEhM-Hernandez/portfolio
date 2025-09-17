@@ -1,47 +1,69 @@
 ---
 // ----------- components ----------- //
-import RedirectIcon from '@icons/RedirectIcon.astro';
+import RedirectIcon from '@icons/RedirectIcon.astro'
 
 // ----------- props ----------- //
-import type { Enterprice } from '@/types/types';
+import type { Enterprise } from '@/types/types'
 
 interface Props {
-  title: string;
-  date: string;
-  enterprice: Enterprice;
-  description: string;
+  title: string
+  date: string
+  enterprise: Enterprise
+  description: string
 }
 
-const { title, date, description, enterprice } = Astro.props;
+const { title, date, description, enterprise } = Astro.props
 ---
 
 <div
-  class="absolute w-3 h-3 bg-accent rounded-full mt-8 -start-[7px] border border-main/20 dark:border-secondary"
+  class="absolute size-4 bg-accent rounded-full mt-8 left-1.5 shadow-lg hover:scale-110 transition-transform duration-300 z-10"
 >
 </div>
-<time class="mb-1 text-sm font-normal leading-none text-main/70">{date}</time>
-<div class="flex gap-8 flex-col md:flex-row">
-  <div class="flex flex-col gap-4">
-    <h3 class="text-lg font-bold text-accent w-full text-balance">
-      {title}
-    </h3>
-    {
-      enterprice.link ? (
-        <a
-          href={enterprice.link}
-          class="text-main/70 inline-flex justify-center items-center text-center align-middle gap-2 hover:text-accent w-fit transition duration-300 font-bold decoration-wavy hover:underline leading-5"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {enterprice.name}
-          <RedirectIcon />
-        </a>
-      ) : (
-        <p class="text-main/60 font-bold leading-5">{enterprice.name}</p>
-      )
-    }
+
+<article
+  class="bg-secondary/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-main/10 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
+>
+  <time
+    class="inline-block mb-6 text-xs font-medium text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20"
+  >
+    {date}
+  </time>
+
+  <div class="grid gap-4 sm:gap-6 grid-cols-1 xl:grid-cols-[300px_1fr]">
+    <div class="flex flex-col gap-3 xl:min-w-[300px]">
+      <h3
+        class="text-lg sm:text-xl font-bold text-accent text-balance group-hover:text-accent/90 transition-colors duration-300"
+      >
+        {title}
+      </h3>
+      {
+        enterprise.link ? (
+          <a
+            href={enterprise.link}
+            class="text-main/70 inline-flex items-center gap-2 hover:text-accent w-fit transition-all duration-300 font-semibold hover:underline decoration-wavy underline-offset-4 hover:scale-105 text-sm sm:text-base"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span class="bg-gradient-to-r from-main/70 to-accent bg-clip-text text-transparent group-hover/link:from-accent group-hover/link:to-accent transition-all duration-300">
+              {enterprise.name}
+            </span>
+            <RedirectIcon class="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
+          </a>
+        ) : (
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-accent/60" />
+            <p class="text-main/70 font-semibold text-sm sm:text-base">{enterprise.name}</p>
+          </div>
+        )
+      }
+    </div>
+
+    <div class="flex-1">
+      <p
+        class="text-main/80 text-pretty leading-relaxed group-hover:text-main transition-colors duration-300 text-sm sm:text-base"
+      >
+        {description}
+      </p>
+    </div>
   </div>
-  <p class="mb-4 font-normal text-main text-pretty w-full md:w-3/4 leading-7">
-    {description}
-  </p>
-</div>
+</article>

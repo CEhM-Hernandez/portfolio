@@ -1,26 +1,24 @@
 ---
 // ----------- components ----------- //
-import Footer from '@components/Footer.astro';
-import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
 
 // ----------- styles ----------- //
-import '@fontsource/rubik/400.css';
-import '@styles/global.css';
-import { ClientRouter } from 'astro:transitions';
+import '@fontsource/rubik/400.css'
+import '@/styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 
 // ----------- config ----------- //
-import Analytics from '@vercel/analytics/astro';
-import ContactButton from '@/components/ContactButton.astro';
-import ContactModal from '@/components/ContactModal.astro';
-import PageContainer from '@/components/PageContainer.astro';
+import Analytics from '@vercel/analytics/astro'
+import PageContainer from '@/components/PageContainer.astro'
 
 // ----------- props ----------- //
 interface Props {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
@@ -38,13 +36,13 @@ const { title, description } = Astro.props;
   <body class="text-main relative">
     <div class="-z-10 absolute h-full w-full bg-background">
       <div
-        class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_34px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+        class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[24px_34px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
       >
       </div>
     </div>
     <Header />
-    <ContactButton />
-    <ContactModal />
+    <!-- <ContactButton /> -->
+    <!-- <ContactModal /> -->
     <PageContainer>
       <slot />
     </PageContainer>

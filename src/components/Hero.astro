@@ -1,74 +1,101 @@
 ---
 // ----------- icons ----------- //
-import GmailIcon from '@icons/GmailIcon.astro';
-import LinkedInIcon from '@icons/LinkedInIcon.astro';
-import GitHubIcon from '@icons/GitHubIcon.astro';
-import ArrowIcon from '@icons/ArrowIcon.astro';
+import GmailIcon from '@icons/GmailIcon.astro'
+import LinkedInIcon from '@icons/LinkedInIcon.astro'
+import GitHubIcon from '@icons/GitHubIcon.astro'
+import ArrowIcon from '@icons/ArrowIcon.astro'
 
 // ----------- components ----------- //
-import Pill from '@components/Pill.astro';
-import Link from '@components/Link.astro';
-import { Image } from 'astro:assets';
+import Pill from '@components/Pill.astro'
+import Link from '@components/Link.astro'
+import { Image } from 'astro:assets'
+
+// ----------- types & constants ----------- //
+import { PERSONAL_INFO } from '@/utils/constants'
+
+const { name, title, description, profileImage, contacts } = PERSONAL_INFO
 ---
 
-<article
-  class="flex flex-col items-center lg:flex-row gap-6 lg:gap-4 justify-between w-full"
->
-  <section
-    class="flex flex-col items-center justify-center w-full min-h-48 h-auto m-0 gap-4 text-center lg:flex-row md:justify-normal lg:text-left md:w-5/6 rounded-lg"
-  >
-    <div class="min-w-48 min-h-48 flex overflow-hidden rounded-lg">
-      <Image
-        transition:name="hero"
-        class="rounded-lgobject-center object-cover w-60 sm:w-48"
-        src="https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp"
-        alt="Foto de Carlos Eduardo Hernández Munévar"
-        height={300}
-        width={300}
-        loading="eager"
-      />
-    </div>
-    <div class="flex flex-col h-full w-full gap-6 p-4">
-      <h1 class="text-3xl font-bold">
-        ¡Hola, soy <strong>Eduardo</strong>!
-      </h1>
-      <div class="flex flex-col gap-4 items-center lg:items-start">
-        <p class="text-lg text-pretty">
-          Mi nombre es Carlos Eduardo Hernández Munévar y soy un desarrollador <strong
-            >full-stack trainee y estudiante de Ingeniería Informática con
-            experiencia profesional en JavaScript</strong
-          >, enfocado en crear soluciones escalables y eficientes.
-        </p>
-        <Link href="/about" text="Más sobre mi">
-          <ArrowIcon />
-        </Link>
+<h1 class="w-full text-center text-3xl sm:text-4xl xl:text-5xl font-bold leading-tight">
+  ¡Hola, soy <span class="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent"
+    >{name}</span
+  >!
+</h1>
+<article class="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-between w-full">
+  <section class="flex-1 col-span-1 lg:col-span-2">
+    <div
+      class="bg-secondary/50 backdrop-blur-sm border border-main/10 rounded-2xl p-3 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 group"
+    >
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center lg:items-start">
+        <div class="relative group/image">
+          <div
+            class="max-h-80 rounded-2xl overflow-hidden border-2 border-accent/20 group-hover/image:border-accent/40 transition-all duration-300 group-hover/image:shadow-xl group-hover/image:shadow-accent/20 aspect-[3/4]"
+          >
+            <Image
+              transition:name="hero"
+              class="w-full h-full object-cover object-center group-hover/image:scale-105 transition-transform duration-500 rounded-2xl"
+              src={profileImage}
+              alt="Foto de Carlos Eduardo Hernández Munévar"
+              height={400}
+              width={400}
+              loading="eager"
+            />
+          </div>
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/10 rounded-2xl -z-10 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6 text-center lg:text-left flex-1">
+          <div class="space-y-3">
+            <p
+              class="text-xl sm:text-2xl font-medium text-main/80 group-hover:text-main transition-colors duration-300"
+            >
+              {title}
+            </p>
+          </div>
+
+          <p
+            class="text-base sm:text-lg text-main/70 text-pretty leading-relaxed group-hover:text-main/80 transition-colors duration-300"
+          >
+            {description}
+          </p>
+
+          <div class="flex justify-center lg:justify-start">
+            <Link
+              href="/about"
+              text="Más sobre mí"
+              className="hover:scale-105 transition-transform duration-300"
+            >
+              <ArrowIcon class="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <ul
-    class="flex flex-row lg:flex-col items-center justify-center gap-6 flex-wrap mx-4 md:mx-0"
+
+  <aside
+    class="w-full xl:w-80 place-self-center bg-secondary/30 backdrop-blur-sm border border-main/10 rounded-2xl p-4 sm:p-6 hover:border-accent/30 transition-all duration-300"
   >
-    <li>
-      <Pill
-        text="ceduardo.eh@gmail.com"
-        href="mailto:ceduardo.eh@gmail.com"
-        hasCopy
-      >
-        <GmailIcon />
-      </Pill>
-    </li>
-    <li>
-      <Pill
-        text="LinkedIn"
-        href="https://www.linkedin.com/in/eduardo-hernandez-munevar/"
-      >
-        <LinkedInIcon />
-      </Pill>
-    </li>
-    <li>
-      <Pill text="GitHub" href="https://github.com/CEhM-Hernandez">
-        <GitHubIcon />
-      </Pill>
-    </li>
-  </ul>
+    <h3 class="text-lg font-semibold text-accent mb-4 text-center">Conecta conmigo</h3>
+    <ul class="flex flex-col items-center sm:flex-row gap-3 sm:gap-4 flex-wrap">
+      <li class="w-fit transform hover:scale-105 transition-transform duration-300">
+        <Pill text={contacts.email} href={`mailto:${contacts.email}`} hasCopy>
+          <GmailIcon class="w-4 h-4" />
+        </Pill>
+      </li>
+      <li class="w-fit transform hover:scale-105 transition-transform duration-300">
+        <Pill text="LinkedIn" href={contacts.linkedin}>
+          <LinkedInIcon class="w-4 h-4" />
+        </Pill>
+      </li>
+      <li class="w-fit transform hover:scale-105 transition-transform duration-300">
+        <Pill text="GitHub" href={contacts.github}>
+          <GitHubIcon class="w-4 h-4" />
+        </Pill>
+      </li>
+    </ul>
+  </aside>
 </article>

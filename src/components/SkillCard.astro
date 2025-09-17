@@ -1,27 +1,26 @@
 ---
 // ------------ Props ------------ //
-import StarIcon from '@icons/StarIcon.astro';
-import type { Skill } from '@/types/types';
-import HalfStarIcon from '@/assets/icons/HalfStarIcon.astro';
+import StarIcon from '@icons/StarIcon.astro'
+import type { Skill } from '@/types/types'
 
 export interface Props {
-  skills: Skill[];
+  skills: Skill[]
 }
 
-const { skills } = Astro.props;
+const { skills } = Astro.props
 
 // Función para calcular las estrellas (completas, medias y vacías)
 const getStars = (level: number) => {
-  const fullStars = Math.floor(level);
-  const hasHalfStar = level % 1 >= 0.5;
-  return { fullStars, hasHalfStar };
-};
+  const fullStars = Math.floor(level)
+  const hasHalfStar = level % 1 >= 0.5
+  return { fullStars, hasHalfStar }
+}
 ---
 
 <ul class="flex flex-col gap-4">
   {
     skills.map((skill) => {
-      const { fullStars, hasHalfStar } = getStars(skill.level);
+      const { fullStars, hasHalfStar } = getStars(skill.level)
       return (
         <li class="flex items-center justify-between">
           <span class="flex gap-2">
@@ -30,8 +29,8 @@ const getStars = (level: number) => {
           </span>
           <div class="flex gap-1">
             {Array.from({ length: 3 }).map((_, index) => {
-              const isHalfStar = hasHalfStar && index === fullStars;
-              const isFullStar = index < fullStars;
+              const isHalfStar = hasHalfStar && index === fullStars
+              const isFullStar = index < fullStars
               return isFullStar ? (
                 <StarIcon class="size-5 text-yellow-600" />
               ) : isHalfStar ? (
@@ -41,11 +40,11 @@ const getStars = (level: number) => {
                 </span>
               ) : (
                 <StarIcon class="size-5 fill-none stroke-yellow-600" />
-              );
+              )
             })}
           </div>
         </li>
-      );
+      )
     })
   }
 </ul>
