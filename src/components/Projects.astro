@@ -5,6 +5,7 @@ import DevIcon from '@icons/DevIcon.astro'
 
 // ----------- types & constants ----------- //
 import type { Project } from '@/types/types'
+import ArticleHeader from './ArticleHeader.astro'
 
 interface Props {
   title?: string
@@ -15,9 +16,11 @@ const { projects, title } = Astro.props
 ---
 
 <article class="flex flex-col gap-12">
-  <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10">
-    <DevIcon class="size-10" />{title || 'Proyectos'}
-  </h2>
+  <ArticleHeader
+    workIcon={DevIcon}
+    title={title || 'Proyectos'}
+    description="Algunos de mis trabajos y colaboraciones más recientes"
+  />
 
   <ul class="flex flex-col gap-4">
     {
