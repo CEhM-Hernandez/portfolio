@@ -6,7 +6,6 @@ import Header from '@components/Header.astro'
 // ----------- styles ----------- //
 import '@fontsource/rubik/400.css'
 import '@/styles/global.css'
-import { ClientRouter } from 'astro:transitions'
 
 // ----------- config ----------- //
 import Analytics from '@vercel/analytics/astro'
@@ -29,93 +28,20 @@ const { title, description } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-
-    <style>
-      /* Critical styles - inline to prevent FOUC */
-      :root {
-        color-scheme: light dark;
-        scroll-behavior: smooth;
-      }
-
-      html {
-        font-family: 'Rubik', system-ui, sans-serif !important;
-        font-weight: 400;
-        overflow-x: hidden;
-      }
-
-      body {
-        font-family: inherit !important;
-        font-weight: inherit;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        min-height: 100vh !important;
-      }
-
-      .dark {
-        color-scheme: dark !important;
-      }
-
-      /* Optimize view transitions - only animate specific elements */
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: 0ms !important;
-        animation-delay: 0ms !important;
-      }
-
-      /* Only allow transitions on named elements like hero */
-      ::view-transition-old(hero),
-      ::view-transition-new(hero) {
-        animation-duration: 300ms;
-      }
-
-      /* Prevent style recalculation during transitions */
-      @media (prefers-reduced-motion: reduce) {
-        ::view-transition-old(*),
-        ::view-transition-new(*) {
-          animation: none !important;
-        }
-      }
-    </style>
-
-    <script>
-      ;(function () {
-        const getTheme = () => {
-          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-            return localStorage.getItem('theme')
-          }
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark'
-          }
-          return 'light'
-        }
-
-        const theme = getTheme()
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark')
-        } else {
-          document.documentElement.classList.remove('dark')
-        }
-      })()
-    </script>
-
     <Analytics />
-    <ClientRouter />
     <title>{title}</title>
 
     <script is:inline>
-      // Minimal theme management - no interference with view transitions
-      const getTheme = () => {
+      const getThemePreferences = () => {
         return (
           localStorage.getItem('theme') ||
           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
         )
       }
 
-      const applyTheme = () => {
-        document.documentElement.classList.toggle('dark', getTheme() === 'dark')
+      const applyThemeImmediate = () => {
+        const isDark = getThemePreferences() === 'dark'
+        document.documentElement.classList.toggle('dark', isDark)
       }
 
       window.toggleTheme = () => {
@@ -124,15 +50,16 @@ const { title, description } = Astro.props
         document.documentElement.classList.toggle('dark', !isDark)
         localStorage.setItem('theme', newTheme)
 
-        // Update button label
-        const srOnlyElement = document.querySelector('#theme-button>span.sr-only')
-        if (srOnlyElement) {
-          srOnlyElement.textContent = !isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+        const updateButtonLabel = () => {
+          const srOnlyElement = document.querySelector('#theme-button>span.sr-only')
+          if (srOnlyElement) {
+            srOnlyElement.textContent = !isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+          }
         }
+        updateButtonLabel()
       }
 
-      // Only apply theme on actual page loads, not during transitions
-      document.addEventListener('astro:page-load', applyTheme)
+      applyThemeImmediate()
     </script>
   </head>
   <body class="text-main relative">
@@ -150,8 +77,27 @@ const { title, description } = Astro.props
     </PageContainer>
     <Footer />
   </body><style is:global>
+    :root {
+      color-scheme: light dark;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-weight: 400;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     strong {
       color: rgba(var(--accent));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </html>
