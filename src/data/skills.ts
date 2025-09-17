@@ -18,6 +18,9 @@ import MariaDBIcon from '@icons/MariaDBIcon.astro'
 import MongoDBIcon from '@icons/MongoDBIcon.astro'
 
 import type { Skill } from '@/types/types'
+import PowerShellIcon from '@/assets/icons/PowerShellIcon.astro'
+import NestJsIcon from '@/assets/icons/NestJsIcon.astro'
+import PrismaIcon from '@/assets/icons/PrismaIcon.astro'
 
 export const FRONTEND_SKILLS: Skill[] = [
   {
@@ -87,6 +90,16 @@ export const BACKEND_SKILLS: Skill[] = [
     name: 'MariaDB',
     icon: MariaDBIcon,
     level: 2
+  },
+  {
+    name: 'NestJS',
+    icon: NestJsIcon,
+    level: 1.5
+  },
+  {
+    name: 'Prisma ORM',
+    icon: PrismaIcon,
+    level: 2
   }
 ]
 
@@ -115,5 +128,10 @@ export const TOOLS_SKILLS: Skill[] = [
     name: 'Postman',
     icon: PostmanIcon,
     level: 2
+  },
+  {
+    name: 'Terminal',
+    icon: PowerShellIcon,
+    level: 2.5
   }
 ]
