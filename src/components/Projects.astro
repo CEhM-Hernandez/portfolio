@@ -22,7 +22,9 @@ const { projects, title } = Astro.props
     description="Algunos de mis trabajos y colaboraciones más recientes"
   />
 
-  <ul class="space-y-6 sm:space-y-8">
+  <!-- Projects grid with improved spacing and group blur effect -->
+  <!-- When hovering over the container, all items blur except the one being hovered -->
+  <ul class="space-y-6 sm:space-y-8 group/projects">
     {
       projects.map(({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
         <ProjectItem
