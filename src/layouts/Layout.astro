@@ -10,7 +10,6 @@ import { ClientRouter } from 'astro:transitions'
 
 // ----------- config ----------- //
 import Analytics from '@vercel/analytics/astro'
-import ContactButton from '@/components/ContactButton.astro'
 import PageContainer from '@/components/PageContainer.astro'
 
 // ----------- props ----------- //
@@ -42,7 +41,7 @@ const { title, description } = Astro.props
       </div>
     </div>
     <Header />
-    <ContactButton />
+    <!-- <ContactButton /> -->
     <!-- <ContactModal /> -->
     <PageContainer>
       <slot />
