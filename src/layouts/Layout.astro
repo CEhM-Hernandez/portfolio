@@ -6,7 +6,6 @@ import Header from '@components/Header.astro'
 // ----------- styles ----------- //
 import '@fontsource/rubik/400.css'
 import '@/styles/global.css'
-import { ClientRouter } from 'astro:transitions'
 
 // ----------- config ----------- //
 import Analytics from '@vercel/analytics/astro'
@@ -102,7 +101,6 @@ const { title, description } = Astro.props
     </script>
 
     <Analytics />
-    <ClientRouter />
     <title>{title}</title>
 
     <script is:inline>
