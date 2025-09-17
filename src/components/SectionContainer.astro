@@ -1,14 +1,14 @@
 ---
 // ----------- props ----------- //
 interface Props {
-  id?: string;
-  className?: string;
+  id?: string
+  className?: string
 }
 
-const { id = '', className = '' } = Astro.props;
+const { id = '', className = '' } = Astro.props
 ---
 
-<span id={id} class="block w-full h-[1px] bg-main/50"></span>
+<span id={id} class="block w-full h-px bg-main/50"></span>
 <aection class={`w-full flex flex-col gap-6 h-full ${className}`}>
   <slot />
 </aection>

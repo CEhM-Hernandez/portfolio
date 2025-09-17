@@ -1,38 +1,39 @@
 ---
 // ----------- components ----------- //
-import ProjectItem from '@/components/ProjectItem.astro';
-import DevIcon from '@icons/DevIcon.astro';
+import ProjectItem from '@/components/ProjectItem.astro'
+import DevIcon from '@icons/DevIcon.astro'
 
 // ----------- types & constants ----------- //
-import type { Project } from '@utils/constants.ts';
+import type { Project } from '@/types/types'
+import ArticleHeader from './ArticleHeader.astro'
 
 interface Props {
-  title?: string;
-  projects: Project[];
+  title?: string
+  projects: Project[]
 }
 
-const { projects, title } = Astro.props;
+const { projects, title } = Astro.props
 ---
 
-<article class="flex flex-col gap-12">
-  <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10">
-    <DevIcon class="size-10" />{title || 'Proyectos'}
-  </h2>
+<article class="space-y-8 sm:space-y-12">
+  <ArticleHeader
+    workIcon={DevIcon}
+    title={title || 'Proyectos'}
+    description="Algunos de mis trabajos y colaboraciones más recientes"
+  />
 
-  <ul class="flex flex-col gap-4">
+  <ul class="space-y-6 sm:space-y-8 group/projects">
     {
-      projects.map(
-        ({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
-          <ProjectItem
-            title={title}
-            description={description}
-            thumbnailUrl={thumbnailUrl}
-            tags={tags}
-            codeUrl={codeUrl}
-            demoUrl={demoUrl}
-          />
-        )
-      )
+      projects.map(({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
+        <ProjectItem
+          title={title}
+          description={description}
+          thumbnailUrl={thumbnailUrl}
+          tags={tags}
+          codeUrl={codeUrl}
+          demoUrl={demoUrl}
+        />
+      ))
     }
   </ul>
 </article>

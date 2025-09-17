@@ -1,30 +1,30 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import compression from 'vite-plugin-compression';
+import { defineConfig } from 'astro/config'
+import compression from 'vite-plugin-compression'
 
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel'
 
-// https://astro.build/config
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineConfig({
-  integrations: [tailwind()],
+  integrations: [],
 
   vite: {
     build: {
       minify: 'esbuild',
       rollupOptions: {
         output: {
-          manualChunks: undefined,
-        },
-      },
+          manualChunks: undefined
+        }
+      }
     },
     plugins: [
       compression({
         algorithm: 'brotliCompress',
-        threshold: 1024,
+        threshold: 1024
       }),
-    ],
+      tailwindcss()
+    ]
   },
 
-  adapter: vercel(),
-});
+  adapter: vercel()
+})

@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: rgba(var(--background));
+  --color-main: rgba(var(--main));
+  --color-secondary: rgba(var(--secondary));
+  --color-accent: rgba(var(--accent));
+  --color-details: rgba(var(--details));
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root {
   --background: 240, 240, 240;
@@ -14,7 +32,6 @@
   --main: 224, 224, 224;
   --secondary: 52, 52, 52;
 }
-
 
 .half-left-star {
   mask: linear-gradient(to right, #000 45%, transparent 0);

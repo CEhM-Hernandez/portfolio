@@ -1,62 +1,41 @@
 ---
 // ------------ components ------------ //
-import Layout from '@layouts/Layout.astro';
-import Card from '@components/Card.astro';
-import CardHeader from '@components/CardHeader.astro';
-import SectionContainer from '@components/SectionContainer.astro';
-import SkillCard from '@components/SkillCard.astro';
-import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro'
+import Card from '@components/Card.astro'
+import CardHeader from '@components/CardHeader.astro'
+import SectionContainer from '@components/SectionContainer.astro'
+import SkillCard from '@components/SkillCard.astro'
+import { Image } from 'astro:assets'
 
 // ------------ content ------------ //
-import {
-  BACKEND_SKILLS,
-  FRONTEND_SKILLS,
-  TOOLS_SKILLS,
-} from '@utils/constants.ts';
+import { BACKEND_SKILLS, FRONTEND_SKILLS, TOOLS_SKILLS } from '@utils/constants.ts'
+import { Content as AboutContent, frontmatter } from '@/data/about.md'
 ---
 
 <Layout
   title="Sobre CEhM - Desarrollador Full-Stack"
   description="Descubre más sobre Carlos Eduardo Hernández Munévar, desarrollador Full-Stack con experiencia en tecnologías modernas y una pasión por el aprendizaje."
 >
-  <div
-    class="w-full flex flex-col sm:flex-row justify-center gap-8 text-center sm:text-left"
-  >
+  <div class="w-full flex flex-col sm:flex-row justify-center gap-8 text-center sm:text-left">
     <h1 class="text-2xl font-bold leading-tight text-balance sm:hidden">
-      ¡Hola! Soy Carlos Eduardo Hernández Munévar
+      {frontmatter.title}
     </h1>
     <Image
       transition:name="hero"
-      class="rounded-lg object-cover mx-auto md:mx-0 md:w-2/5 max-w-xs w-full"
-      src="https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp"
+      class="w-full h-full object-cover object-center rounded-2xl mx-auto md:mx-0 md:w-2/5 max-w-sm aspect-[3/4]"
+      src={frontmatter.profileImage}
       alt="Foto de Carlos Eduardo Hernández Munévar"
-      height={300}
-      width={300}
+      height={500}
+      width={500}
       loading="eager"
     />
     <div class="w-full flex flex-col gap-6 items-center sm:items-start h-full">
-      <h1
-        class="text-2xl md:text-3xl font-bold leading-tight text-balance hidden sm:block"
-      >
-        ¡Hola! Soy Carlos Eduardo Hernández Munévar
+      <h1 class="text-2xl md:text-3xl font-bold leading-tight text-balance hidden sm:block">
+        {frontmatter.title}
       </h1>
-      <p class="mt-6 text-lg leading-relaxed text-pretty">
-        Tengo <strong>20 años</strong> y soy un apasionado desarrollador trainee
-        <strong>Full-Stack</strong> con más de 3 meses de experiencia. Nací en
-        <strong>Bogotá, Colombia</strong>, pero actualmente vivo en <strong
-          >Medellín</strong
-        >. Soy estudiante de Ingeniería Informática en la Universidad
-        Politécnico Colombiano Jaime Isaza Cadavid.
-      </p>
-      <p class="text-lg leading-relaxed text-pretty">
-        Me motiva crear soluciones digitales modernas que tengan un impacto
-        positivo. Disfruto trabajar con tecnologías como <strong
-          >JavaScript</strong
-        >,
-        <strong>Node.js</strong>, y <strong>Tailwind CSS</strong>. Estoy en
-        constante aprendizaje y siempre busco mejorar tanto a nivel técnico como
-        personal.
-      </p>
+      <div class="text-lg">
+        <AboutContent />
+      </div>
     </div>
   </div>
   <SectionContainer>
@@ -64,17 +43,17 @@ import {
       Habilidades <strong>&</strong> Conocimientos
     </h2>
     <div
-      class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] justify-items-center gap-4 mt-8"
+      class="flex flex-col sm:flex-row flex-wrap justify-center items-center sm:items-stretch gap-6 mt-8"
     >
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Frontend</CardHeader>
         <SkillCard skills={FRONTEND_SKILLS} />
       </Card>
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Backend</CardHeader>
         <SkillCard skills={BACKEND_SKILLS} />
       </Card>
-      <Card className="w-full max-w-80 sm:max-w-none">
+      <Card className="w-full max-w-80">
         <CardHeader className="text-center">Herramientas</CardHeader>
         <SkillCard skills={TOOLS_SKILLS} />
       </Card>

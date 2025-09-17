@@ -16,13 +16,13 @@ const { label, id, placeholder = '', type, required = false } = Astro.props
     id={id}
     name={id}
     autocomplete="on"
-    class="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border border-main/30 appearance-none dark:focus:border-accent focus:outline-none focus:ring-0 focus:saturate-150 peer"
+    class="block px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border border-main/30 appearance-none dark:focus:border-accent focus:outline-hidden focus:ring-0 focus:saturate-150 peer"
     placeholder={placeholder}
     required={required}
   />
   <label
     for={id}
-    class="absolute text-sm text-main/50 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-secondary rounded-lg px-2 peer-focus:px-2 peer-focus:saturate-150 peer-focus:dark:text-accent peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+    class="absolute text-sm text-main/50 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-secondary rounded-lg px-2 peer-focus:px-2 peer-focus:saturate-150 dark:peer-focus:text-accent peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:rtl:translate-x-1/4 peer-focus:rtl:left-auto start-1"
     >{label}</label
   >
 </div>

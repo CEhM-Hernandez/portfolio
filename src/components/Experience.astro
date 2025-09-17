@@ -1,23 +1,34 @@
 ---
 // ----------- components ----------- //
-import WorkIcon from '@icons/WorkIcon.astro';
-import ExperienceItem from '@components/ExperienceItem.astro';
+import WorkIcon from '@icons/WorkIcon.astro'
+import ExperienceItem from '@components/ExperienceItem.astro'
 
 // ----------- content ----------- //
-import { EXPERIENCE } from '@utils/constants.ts';
+import { EXPERIENCE } from '@utils/constants.ts'
+import ArticleHeader from './ArticleHeader.astro'
 ---
 
-<article id="experience" class="flex flex-col gap-12">
-  <h2 class="flex gap-2 text-2xl ml-8 font-bold leading-10 text-balance">
-    <WorkIcon class="size-10" />Experiencia Laboral
-  </h2>
-  <ol class="relative border-s-2 border-main/20 dark:border-secondary w-full">
-    {
-      EXPERIENCE.map((experience) => (
-        <li class="mb-10 ms-4">
-          <ExperienceItem {...experience} />
-        </li>
-      ))
-    }
-  </ol>
+<article id="experience" class="flex flex-col gap-8 sm:gap-12">
+  <ArticleHeader
+    workIcon={WorkIcon}
+    title="Experiencia Laboral"
+    description="Mi trayectoria profesional y crecimiento"
+  />
+
+  <div class="relative">
+    <div
+      class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/60 to-accent/20"
+    >
+    </div>
+
+    <ol class="space-y-8 sm:space-y-12 ml-2 sm:ml-4">
+      {
+        EXPERIENCE.map((experience) => (
+          <li class="pl-8 sm:pl-12">
+            <ExperienceItem {...experience} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </article>
