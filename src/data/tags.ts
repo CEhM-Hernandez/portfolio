@@ -11,7 +11,6 @@ import TypescriptIcon from '@icons/TypescriptIcon.astro'
 import MySQLIcon from '@icons/MySQLIcon.astro'
 import MariaDBIcon from '@icons/MariaDBIcon.astro'
 import MongoDBIcon from '@icons/MongoDBIcon.astro'
-import AuthJSIcon from '@icons/AuthJSIcon.astro'
 
 import type { Tags } from '@/types/types'
 
@@ -80,10 +79,5 @@ export const TAGS_DICTIONARY: Record<string, Tags> = {
     name: 'MongoDB',
     class: 'border border-[#4DB33D] hover:bg-[#4DB33D]/40 hover:text-white',
     icon: MongoDBIcon
-  },
-  AUTHJS: {
-    name: 'Auth.js',
-    class: 'border border-[#E97627] hover:bg-[#E97627]/40 hover:text-white',
-    icon: AuthJSIcon
   }
 }

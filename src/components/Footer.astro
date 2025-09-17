@@ -1,5 +1,97 @@
-<footer class="w-full">
-  <p class="bg-secondary p-4 text-center text-main w-full border-t border-t-main/50 mt-40">
-    © 2024, Built with Astro by <strong class="text-main">CEhM</strong>
-  </p>
+---
+// ----------- components ----------- //
+import GitHubIcon from '@icons/GitHubIcon.astro'
+import LinkedInIcon from '@icons/LinkedInIcon.astro'
+import GmailIcon from '@icons/GmailIcon.astro'
+import AstroIcon from '@icons/AstroIcon.astro'
+
+// ----------- data ----------- //
+import { CONTACT_INFO, PERSONAL_CONSTANTS } from '@/data/constants'
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="w-full mt-20 sm:mt-32">
+  <div class="bg-secondary/50 backdrop-blur-sm border-t border-main/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+        <div class="md:col-span-2 space-y-4">
+          <h3 class="text-lg font-bold text-accent">
+            {PERSONAL_CONSTANTS.fullName}
+          </h3>
+          <p class="text-main/70 text-pretty leading-relaxed max-w-md mx-auto md:mx-0">
+            Desarrollador Full-Stack apasionado por crear soluciones escalables y eficientes.
+            Estudiante de {PERSONAL_CONSTANTS.degree} en {PERSONAL_CONSTANTS.university}.
+          </p>
+          <div class="flex items-center gap-2 text-sm text-main/60 mx-auto md:mx-0 w-fit">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span>Disponible para nuevos proyectos</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-semibold text-accent">Conecta conmigo</h4>
+          <div class="flex flex-col gap-3 mx-auto w-fit md:mx-0">
+            <a
+              href={`mailto:${CONTACT_INFO.email}`}
+              class="inline-flex items-center gap-3 text-main/70 hover:text-accent transition-colors duration-300 group"
+            >
+              <div
+                class="p-2 rounded-lg bg-main/5 group-hover:bg-accent/10 transition-colors duration-300"
+              >
+                <GmailIcon class="w-4 h-4" />
+              </div>
+              <span class="text-sm font-medium">Email</span>
+            </a>
+            <a
+              href={CONTACT_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 text-main/70 hover:text-accent transition-colors duration-300 group"
+            >
+              <div
+                class="p-2 rounded-lg bg-main/5 group-hover:bg-accent/10 transition-colors duration-300"
+              >
+                <LinkedInIcon class="w-4 h-4" />
+              </div>
+              <span class="text-sm font-medium">LinkedIn</span>
+            </a>
+            <a
+              href={CONTACT_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 text-main/70 hover:text-accent transition-colors duration-300 group"
+            >
+              <div
+                class="p-2 rounded-lg bg-main/5 group-hover:bg-accent/10 transition-colors duration-300"
+              >
+                <GitHubIcon class="w-4 h-4" />
+              </div>
+              <span class="text-sm font-medium">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-main/10">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-2 text-sm text-main/60">
+            <span>© <span id="current-year">{currentYear}</span></span>
+            <span class="text-accent font-medium">{PERSONAL_CONSTANTS.nickName}</span>
+          </div>
+
+          <div class="flex items-center gap-2 text-sm text-main/60">
+            <span>Desarrollado con</span>
+            <div
+              class="flex items-center gap-1 px-2 py-1 rounded-md bg-main/5 border border-main/10"
+            >
+              <AstroIcon class="w-4 h-4 text-accent" />
+              <span class="font-medium text-accent">Astro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-1 bg-gradient-to-r from-accent/20 via-accent to-accent/20"></div>
 </footer>

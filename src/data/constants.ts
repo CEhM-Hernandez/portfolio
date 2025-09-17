@@ -3,7 +3,8 @@ export const PROFILE_IMAGE = 'https://i.postimg.cc/tCfzMX26/dibujo-avatar.webp'
 export const PERSONAL_CONSTANTS = {
   fullName: 'Carlos Eduardo Hernández Munévar',
   shortName: 'Eduardo',
-  age: 20,
+  age: new Date().getFullYear() - 2004,
+  nickName: 'CEhM',
   location: {
     current: 'Medellín',
     origin: 'Bogotá, Colombia'

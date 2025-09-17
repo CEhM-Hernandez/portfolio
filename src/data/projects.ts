@@ -4,8 +4,7 @@ import { TAGS_DICTIONARY } from './tags'
 export const PROJECTS: Project[] = [
   {
     title: 'Sistema de Registro Empresarial - CUENTI',
-    demoUrl: '#',
-    codeUrl: '#',
+    demoUrl: 'https://login-business.cuenti.co/',
     description:
       'Plataforma de registro paso a paso desarrollada para optimizar la puerta de entrada digital de CUENTI, mejorando significativamente la experiencia de onboarding de usuarios empresariales. Implementé una arquitectura robusta con Next.js y Auth.js para manejar autenticación segura y flujos de registro complejos. El sistema integra APIs de geolocalización para autocompletar códigos de país, validación de datos en tiempo real, y componentes UI personalizados diseñados en colaboración con el equipo de diseño. La solución resultó en un incremento del 35% en conversiones de registro y una reducción del 60% en datos incompletos.',
     thumbnailUrl: '/images/Illustration-4.webp',
@@ -13,7 +12,6 @@ export const PROJECTS: Project[] = [
       TAGS_DICTIONARY.NEXT,
       TAGS_DICTIONARY.TYPESCRIPT,
       TAGS_DICTIONARY.REACT,
-      TAGS_DICTIONARY.AUTHJS,
       TAGS_DICTIONARY.TAILWIND
     ]
   },

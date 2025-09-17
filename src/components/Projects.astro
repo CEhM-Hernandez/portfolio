@@ -15,14 +15,14 @@ interface Props {
 const { projects, title } = Astro.props
 ---
 
-<article class="flex flex-col gap-12">
+<article class="space-y-8 sm:space-y-12">
   <ArticleHeader
     workIcon={DevIcon}
     title={title || 'Proyectos'}
     description="Algunos de mis trabajos y colaboraciones más recientes"
   />
 
-  <ul class="flex flex-col gap-4">
+  <ul class="space-y-6 sm:space-y-8">
     {
       projects.map(({ title, description, thumbnailUrl, tags, codeUrl, demoUrl }) => (
         <ProjectItem

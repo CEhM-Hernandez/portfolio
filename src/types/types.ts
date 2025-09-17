@@ -21,7 +21,7 @@ export interface Tags {
 export interface Project {
   title: string
   demoUrl: string
-  codeUrl: string
+  codeUrl?: string
   description: string
   thumbnailUrl: string
   tags: Tags[]
