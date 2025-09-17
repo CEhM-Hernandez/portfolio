@@ -32,6 +32,7 @@ const { name, title, description, profileImage, contacts } = PERSONAL_INFO
             class="max-h-80 rounded-2xl overflow-hidden border-2 border-accent/20 group-hover/image:border-accent/40 transition-all duration-300 group-hover/image:shadow-xl group-hover/image:shadow-accent/20 aspect-[3/4]"
           >
             <Image
+              transition:name="hero"
               class="w-full h-full object-cover object-center group-hover/image:scale-105 transition-transform duration-500 rounded-2xl"
               src={profileImage}
               alt="Foto de Carlos Eduardo Hernández Munévar"
