@@ -38,11 +38,11 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'Base64 Encoder/Decoder - Herramienta de Codificación',
-    demoUrl: 'https://base64-encoder-cehm.vercel.app/',
-    codeUrl: 'https://github.com/CEhM-Hernandez/base64-encoder',
+    demoUrl: 'https://base64.cehm.dev',
+    codeUrl: 'https://github.com/CEhM-Hernandez/base-64',
     description:
       'Aplicación web especializada en codificación y decodificación de texto utilizando el estándar Base64. Incluye validación de entrada en tiempo real, manejo de errores y funcionalidad de copiado al portapapeles con feedback visual. Implementa algoritmos de conversión optimizados y una interfaz de usuario intuitiva que soporta gran cantidad de texto.',
     thumbnailUrl: '/images/thumbnail-base64.webp',
-    tags: [TAGS_DICTIONARY.HTML, TAGS_DICTIONARY.CSS, TAGS_DICTIONARY.JAVASCRIPT]
+    tags: [TAGS_DICTIONARY.ASTRO, TAGS_DICTIONARY.TAILWIND, TAGS_DICTIONARY.TYPESCRIPT]
   }
 ]
